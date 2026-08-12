@@ -5,8 +5,13 @@ services:
     restart: unless-stopped
     networks:
       - vpn
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "https://am.i.mullvad.net/connected"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
     ports:
-      - 8080:8080/tcp # qbittorrent webui
+      - 8080:8080/tcp
       - 8888:8888/tcp
       - 8388:8388/tcp
       - 8388:8388/udp
@@ -19,12 +24,27 @@ services:
     env_file: .env
     environment:
       - TZ=Europe/Oslo
-
       - VPN_SERVICE_PROVIDER=mullvad
       - VPN_TYPE=wireguard
-
       - WIREGUARD_PRIVATE_KEY=${WIREGUARD_PRIVATE_KEY}
       - WIREGUARD_ADDRESSES=${WIREGUARD_ADDRESSES}
+
+  qbittorrent:
+    container_name: qbittorrent
+    image: lscr.io/linuxserver/qbittorrent:latest
+    restart: unless-stopped
+    network_mode: "service:gluetun"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Oslo
+      - WEBUI_PORT=8080
+    volumes:
+      - /opt/appdata/qbittorrent/config:/config
+      - /data/torrents:/data/torrents
+    depends_on:
+      gluetun:
+        condition: service_healthy
 
 networks:
   vpn:
