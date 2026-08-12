@@ -8,6 +8,6 @@
       allowedTCPPortRanges = [ ];
     };
 
-    nftable.enable = true;
+    nftables.enable = true;
   };
 }

@@ -1,7 +1,8 @@
 { inputs, ... }:
 
 {
-  imports = [ ./disko.nix ];
-
-  modules = [ inputs.disko.nixosModules.disko ];
+  imports = [
+    inputs.disko.nixosModules.disko
+    ./disko.nix
+  ];
 }

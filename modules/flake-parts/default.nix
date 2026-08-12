@@ -1,11 +1,13 @@
-{ inputs, ... }:
+{ inputs, self, ... }:
 
 {
-  flake.configurations =
+  flake.nixosConfigurations =
     let
       hostsDir = ../../hosts;
-      hostNames = builtins.attrNames (
-        inputs.nixpkgs.lib.filterAttrs (_: type: type == "directory") (builtins.readDir hostsDir)
+      hostNames = builtins.filter (name: name != "example") (
+        builtins.attrNames (
+          inputs.nixpkgs.lib.filterAttrs (_: type: type == "directory") (builtins.readDir hostsDir)
+        )
       );
       nixpkgs = inputs.nixpkgs;
 
@@ -14,9 +16,9 @@
       name:
       nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs self; };
         modules = [
-          (hostsDir + name)
+          (hostsDir + "/${name}")
           ../core
           ../nixos
         ];
