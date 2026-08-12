@@ -20,10 +20,6 @@ in
     };
 
     settings = {
-
-      # Nix store optimize automatically
-      auto-optimise.store = true;
-
       # Users who can interact with the nix daemon
       allowed-users = [
         "@wheel"
