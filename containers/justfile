@@ -1,0 +1,52 @@
+# Mr. Vibecode Claude
+# Done just to check if everything works*
+
+compose_engine := "podman-compose"
+containers_dir := justfile_directory()
+
+# create the shared external networks, idempotent
+networks:
+    podman network create proxy 2>/dev/null || true
+    podman network create vpn 2>/dev/null || true
+
+# list available container stacks
+list:
+    @for d in {{containers_dir}}/*/; do \
+        [ -f "$d/compose.yaml" ] && basename "$d"; \
+    done
+
+# bring up one stack
+up stack: networks
+    cd {{containers_dir}}/{{stack}} && {{compose_engine}} up -d
+
+down stack:
+    cd {{containers_dir}}/{{stack}} && {{compose_engine}} down
+
+logs stack:
+    cd {{containers_dir}}/{{stack}} && {{compose_engine}} logs -f
+
+pull stack:
+    cd {{containers_dir}}/{{stack}} && {{compose_engine}} pull
+
+# bring up everything — gluetun-qbittorrent first since other stacks
+# reach qbittorrent through it, everything else in any order
+up-all: networks
+    just up gluetun-qbittorrent
+    @for d in {{containers_dir}}/*/; do \
+        name=$(basename "$d"); \
+        [ "$name" = "gluetun-qbittorrent" ] && continue; \
+        just up "$name"; \
+    done
+
+down-all:
+    @for d in {{containers_dir}}/*/; do \
+        just down "$(basename "$d")"; \
+    done
+
+pull-all:
+    @for d in {{containers_dir}}/*/; do \
+        just pull "$(basename "$d")"; \
+    done
+
+status:
+    podman ps --format "table {{{{.Names}}}}\t{{{{.Status}}}}\t{{{{.Ports}}}}"
