@@ -18,6 +18,13 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
+    colmena = {
+      type = "github";
+      owner = "nix-community";
+      repo = "colmena";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     disko = {
       type = "github";
       owner = "nix-community";
