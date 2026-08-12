@@ -9,8 +9,8 @@ services:
       - 13378:80
     volumes:
       # Requires local storage
-      - /docker/configs/audiobookshelf/config:/config
-      - /docker/configs/audiobookshelf/metadata:/metadata
+      - /opt/appdata/audiobookshelf/config:/config
+      - /opt/appdata/audiobookshelf/metadata:/metadata
 
       # Allows external storage
       - </path/to/audiobooks>:/audiobooks

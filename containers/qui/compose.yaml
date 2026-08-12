@@ -3,8 +3,14 @@ services:
     container_name: qui
     image: ghcr.io/autobrr/qui:latest
     restart: unless-stopped
+    networks:
+      - vpn
     ports:
       - 7476:7476
     volumes:
-      - /docker/configs/qui:/config
+      - /opt/appdata/qui/config:/config
+      - /data/torrents:/data/torrents
 
+networks:
+  vpn:
+    external: true

@@ -3,12 +3,15 @@ services:
     container_name: qbittorrent
     image: lscr.io/linuxserver/qbittorrent:latest
     restart: unless-stopped
-    network-mode: "service:gluetun"
+    network_mode: "service:gluetun"
     environment:
       - TZ=Europe/Oslo
       - WEBUI_PORT=8080
+
+      - PUID=1000
+      - PGID=1000
     volumes:
-      - /docker/configs/qbittorrent:/config
+      - /opt/appdata/qbittorrent/config:/config
       - /data/torrents:/data/torrents
     depends_on:
       gluetun:

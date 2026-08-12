@@ -1,13 +1,17 @@
-service:
+services:
   gluetun:
     container_name: gluetun
     image: qmcgaw/gluetun:latest
+    restart: unless-stopped
+    networks:
+      - vpn
     ports:
+      - 8080:8080/tcp # qbittorrent webui
       - 8888:8888/tcp
       - 8388:8388/tcp
       - 8388:8388/udp
     volumes:
-      - /docker/configs/gluetun:/gluetun
+      - /opt/appdata/gluetun/config:/gluetun
     devices:
       - /dev/net/tun:/dev/net/tun
     cap_add:
@@ -21,3 +25,7 @@ service:
 
       - WIREGUARD_PRIVATE_KEY=${WIREGUARD_PRIVATE_KEY}
       - WIREGUARD_ADDRESSES=${WIREGUARD_ADDRESSES}
+
+networks:
+  vpn:
+    external: true

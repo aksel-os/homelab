@@ -1,7 +1,7 @@
 services:
   immich-server:
     container_name: immich-server
-    image: ghcr.io/immich-app/immich-server:latest
+    image: ghcr.io/immich-app/immich-server:v3
     restart: always
     ports:
       - 2283:2283
@@ -32,5 +32,5 @@ services:
       POSTGRES_INITDB_ARGS: '--data-checksums'
       DB_STORAGE_TYPE: 'HDD'
     volumes:
-      - /docker/databases/immich:/var/lib/postgresql/data
+      - /opt/appdata/immich/postgres:/var/lib/postgresql/data
     shm_size: 128mb

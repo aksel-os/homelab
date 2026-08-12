@@ -6,3 +6,5 @@
 ## Networks
 
 *proxy*: Used by external facing containers for communicating with traefik
+
+*vpn*: Used to communicate with gluetun/qbittorrent

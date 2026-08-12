@@ -7,8 +7,8 @@ services:
       - 8096:8096
     volumes:
       # Local
-      - /docker/configs/jellyfin:/config
-      - /docker/cache/jellyfin:/cache
+      - /opt/appdata/jellyfin/config:/config
+      - /opt/appdata/jellyfin/cache:/cache
 
       # External
       - <path/to/media>:/media:ro
