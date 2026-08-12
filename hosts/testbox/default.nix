@@ -4,12 +4,13 @@
   imports = [
     inputs.disko.nixosModules.disko
     ./disko.nix
+    ./nas.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "example";
+  networking.hostName = "testbox";
   networking.useDHCP = true;
 
   boot.initrd.availableKernelModules = [
