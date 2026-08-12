@@ -1,0 +1,15 @@
+services:
+  qbittorrent:
+    container_name: qbittorrent
+    image: lscr.io/linuxserver/qbittorrent:latest
+    restart: unless-stopped
+    network-mode: "service:gluetun"
+    environment:
+      - TZ=Europe/Oslo
+      - WEBUI_PORT=8080
+    volumes:
+      - /docker/configs/qbittorrent:/config
+      - /data/torrents:/data/torrents
+    depends_on:
+      gluetun:
+        condition: service_healthy

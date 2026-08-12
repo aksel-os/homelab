@@ -1,0 +1,17 @@
+services:
+  audiobookshelf:
+    container_name: audiobookshelf
+    image: ghcr.io/advplyr/audiobookshelf:latest # latest stable
+    restart: unless-stopped
+    environment:
+      - TZ=Europe/Oslo
+    ports:
+      - 13378:80
+    volumes:
+      # Requires local storage
+      - /docker/configs/audiobookshelf/config:/config
+      - /docker/configs/audiobookshelf/metadata:/metadata
+
+      # Allows external storage
+      - </path/to/audiobooks>:/audiobooks
+      - </path/to/podcasts>:/podcasts
