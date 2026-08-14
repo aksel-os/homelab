@@ -6,30 +6,12 @@ default:
     @just --list --unsorted
 
 
-[group('build')]
-[macos] # Only avaliable for macos
-provision:
-    sudo nix run github:nix-darwin/nix-darwin \
-    --extra-experimental-features 'nix-command flakes' \
-    -- switch --flake {{ flake }}
-    sudo -i nix-env --uninstall nix
-
-[group('build')]
-[linux]
-setup:
-    sudo nixos-rebuild \
-    --extra-experimental-features 'nix-command flakes' \
-    -- switch --flake {{ flake }}
-    sudo -i nix-env --uninstall nix
-
-
 [group('rebuild')]
 [private]
 builder goal *args:
     {{ rebuild }} {{ goal }} \
     --flake {{ flake }} \
     {{ args }} \
-    # |& nom && dix $(find /nix/var/nix/profiles/system-*-link|sort -V|tail -n 2)
     
 [group('rebuild')]
 switch *args: (builder "switch" args)
