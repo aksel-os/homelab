@@ -12,13 +12,14 @@
           name = "homelab-shell";
           meta.description = "Dev environment for homelab";
 
-          packages = [
-            pkgs.just
-            pkgs.git
-            pkgs.zsh
-            pkgs.colmena
-            pkgs.sops
-            pkgs.age
+          packages = with pkgs; [
+            just
+            git
+            zsh
+            colmena
+            sops
+            age
+            ssh-to-age
           ];
 
           shellHook = ''

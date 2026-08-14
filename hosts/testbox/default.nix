@@ -4,7 +4,8 @@
   imports = [
     inputs.disko.nixosModules.disko
     ./disko.nix
-    ./nas.nix
+    # ./nas.nix
+    ./secrets.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
