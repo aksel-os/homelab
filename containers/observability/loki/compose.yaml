@@ -1,0 +1,16 @@
+services:
+  loki:
+    container_name: loki
+    image: grafana/loki:latest
+    restart: unless-stopped
+    networks:
+      - monitoring
+    ports:
+      - 3100:3100
+    volumes:
+      - /opt/appdata/loki/data:/loki
+      - ./config/loki.yaml:/etc/loki/local-config.yaml:ro
+
+networks:
+  monitoring:
+    external: true

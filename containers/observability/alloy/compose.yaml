@@ -1,0 +1,25 @@
+services:
+  alloy:
+    container_name: alloy
+    image: grafana/alloy:latest
+    restart: unless-stopped
+    networks:
+      - monitoring
+    ports:
+      - 12345:12345
+    volumes:
+      - /opt/appdata/alloy/data:/var/lib/alloy/data
+      - ./config/config.alloy:/etc/alloy/config.alloy:ro
+      - /var/run/podman/podman.sock:/var/run/docker.sock:ro
+      - /var/log/journal:/var/log/journal:ro
+      - /run/log/journal:/run/log/journal:ro
+      - /etc/machine-id:/etc/machine-id:ro
+    command:
+      - run
+      - --server.http.listen-addr=0.0.0.0:12345
+      - --storage.path=/var/lib/alloy/data
+      - /etc/alloy/config.alloy
+
+networks:
+  monitoring:
+    external: true
