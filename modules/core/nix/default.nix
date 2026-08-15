@@ -5,5 +5,6 @@
     ./nixpkgs.nix
     ./overlays.nix
     ./substituters.nix
+    ./users.nix
   ];
 }
