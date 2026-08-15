@@ -18,7 +18,7 @@ in
 
   sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
 
-  sops.secrets = genAttrs [ "wireguard/key" "wireguard/address" ] {
+  sops.secrets = genAttrs [ "wireguard/key" "wireguard/address" ] (_: {
     sopsFile = "${self}/secrets/services/wireguard.yaml";
-  };
+  });
 }
