@@ -3,7 +3,6 @@ services:
     container_name: prometheus
     image: prom/prometheus:latest
     restart: unless-stopped
-    user: "1000:1000"
     networks:
       - monitoring
     ports:

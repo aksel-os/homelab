@@ -3,7 +3,6 @@ services:
     container_name: loki
     image: grafana/loki:latest
     restart: unless-stopped
-    user: "1000:1000"
     networks:
       - monitoring
     ports:
