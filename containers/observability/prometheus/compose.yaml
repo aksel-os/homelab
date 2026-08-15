@@ -8,7 +8,7 @@ services:
     ports:
       - 9090:9090
     volumes:
-      - /opt/appdata/prometheus/data:/prometheus
+      - /opt/appdata/prometheus/data:/prometheus:Z
       - ./config/prometheus.yml:/etc/prometheus/prometheus.yml:ro
 
 networks:
