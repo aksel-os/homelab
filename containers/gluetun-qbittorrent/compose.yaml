@@ -10,11 +10,6 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
-    ports:
-      - 8080:8080/tcp
-      - 8888:8888/tcp
-      - 8388:8388/tcp
-      - 8388:8388/udp
     volumes:
       - /opt/appdata/gluetun/config:/gluetun
     devices:
