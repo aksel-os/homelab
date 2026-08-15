@@ -27,5 +27,5 @@
     "virtio_blk"
   ];
 
-  users.users.root.initialPassword = "password";
+  console.keyMap = "no";
 }
