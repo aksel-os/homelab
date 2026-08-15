@@ -8,6 +8,7 @@ containers_dir := justfile_directory()
 networks:
     podman network create proxy 2>/dev/null || true
     podman network create vpn 2>/dev/null || true
+    podman network create monitoring 2>/dev/null || true
 
 # list available container stacks
 list:
@@ -28,6 +29,9 @@ logs stack:
 pull stack:
     cd {{containers_dir}}/{{stack}} && {{compose_engine}} pull
 
+up-o stack:
+    cd {{containers_dir}}/observability/{{stack}} && {{compose_engine}} up -d
+
 # bring up everything — gluetun-qbittorrent first since other stacks
 # reach qbittorrent through it, everything else in any order
 up-all: networks
@@ -47,6 +51,13 @@ pull-all:
     @for d in {{containers_dir}}/*/; do \
         just pull "$(basename "$d")"; \
     done
+
+up-observability: networks
+    @for d in {{containers_dir}}/observability/*/; do \
+        name=$(basename "$d"); \
+        just up-o "$name"; \
+    done
+
 
 status:
     podman ps --format "table {{{{.Names}}}}\t{{{{.Status}}}}\t{{{{.Ports}}}}"
