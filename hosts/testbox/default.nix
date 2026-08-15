@@ -6,6 +6,7 @@
     ./disko.nix
     # ./nas.nix
     ./secrets.nix
+    ./user.nix
   ];
 
   nixpkgs.hostPlatform = {
