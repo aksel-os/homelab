@@ -10,7 +10,7 @@ services:
     volumes:
       - /opt/appdata/alloy/data:/var/lib/alloy/data
       - ./config/config.alloy:/etc/alloy/config.alloy:ro
-      - /var/run/podman/podman.sock:/var/run/docker.sock:ro
+      - /run/user/1000/podman/podman.sock:/var/run/docker.sock:ro
       - /var/log/journal:/var/log/journal:ro
       - /run/log/journal:/run/log/journal:ro
       - /etc/machine-id:/etc/machine-id:ro
