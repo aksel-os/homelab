@@ -3,6 +3,7 @@ services:
     container_name: grafana
     image: grafana/grafana:latest
     restart: unless-stopped
+    user: "1000:1000"
     networks:
       - monitoring
     ports:
