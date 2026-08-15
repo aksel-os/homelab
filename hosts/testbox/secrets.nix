@@ -26,5 +26,9 @@
     "wireguard/address" = {
       sopsFile = "${self}/secrets/services/wireguard.yaml";
     };
+
+    "grafana/passwd" = {
+      sopsFile = "${self}/secrets/services/grafana.yaml";
+    };
   };
 }
