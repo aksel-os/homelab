@@ -3,7 +3,7 @@ services:
     container_name: node-exporter
     image: prom/node-exporter:latest
     restart: unless-stopped
-    network-mode: host
+    network_mode: host
     pid: host
     volumes:
       - /proc:/host/proc:ro
