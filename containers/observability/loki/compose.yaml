@@ -6,7 +6,7 @@ services:
     networks:
       - monitoring
     ports:
-      - 3100:3100
+      - 127.0.0.1:3100:3100
     volumes:
       - /opt/appdata/loki/data:/loki
       - ./config/loki.yaml:/etc/loki/local-config.yaml:ro
