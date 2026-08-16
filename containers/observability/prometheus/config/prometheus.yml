@@ -13,4 +13,4 @@ scrape_configs:
 
   - job_name: alloy
     static_configs:
-      - targets: ["alloy:12345"]
+      - targets: ["host.containers.internal:12345"]
