@@ -21,7 +21,7 @@ in
 
       volumes = [
         "/var/lib/qbittorrent/config:/config"
-        "/srv/downloads:/downloads"
+        "/data/torrents:/downloads"
       ];
     };
 
@@ -33,6 +33,6 @@ in
 
   systemd.tmpfiles.rules = [
     "d /var/lib/qbittorrent/config 0755 1000 1000 -"
-    "d /data/downloads 0755 1000 1000 -"
+    "d /data/torrents 0755 1000 1000 -"
   ];
 }
