@@ -18,13 +18,6 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
-    colmena = {
-      type = "github";
-      owner = "nix-community";
-      repo = "colmena";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     disko = {
       type = "github";
       owner = "nix-community";
@@ -37,6 +30,12 @@
       owner = "Mic92";
       repo = "sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    quadlet-nix = {
+      type = "github";
+      owner = "SEIAROTg";
+      repo = "quadlet-nix";
     };
   };
 }
