@@ -2,11 +2,17 @@
 
 let
   inherit (config.services) prometheus;
+  inherit (config.sops) secrets;
 
 in
 {
   services.grafana = {
     enable = true;
+
+    security = {
+      adminPasswordFile = secrets."grafana/admin_password".path;
+      secretKeyFile = secrets."grafana/secret_key".path;
+    };
 
     provision = {
       enable = true;

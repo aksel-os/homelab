@@ -27,7 +27,11 @@
       sopsFile = "${self}/secrets/services/wireguard.yaml";
     };
 
-    "grafana/passwd" = {
+    "grafana/admin_password" = {
+      sopsFile = "${self}/secrets/services/grafana.yaml";
+    };
+
+    "grafana/secret_key" = {
       sopsFile = "${self}/secrets/services/grafana.yaml";
     };
   };
