@@ -2,7 +2,7 @@
   services.alloy = {
     enable = true;
 
-    extraFlags = [ "--server.http.listen-addr=0.0.0.0:12345" ];
+    extraFlags = [ "--server.http.listen-addr=127.0.0.1:12345" ];
   };
 
   users.groups.alloy = { };
