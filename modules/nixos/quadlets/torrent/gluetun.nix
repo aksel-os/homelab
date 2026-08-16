@@ -7,7 +7,7 @@ in
 {
   virtualisation.quadlet.containers.gluetun = {
     containerConfig = {
-      image = "quay.io/qmcgaw/gluetun:v3";
+      image = "docker.io/qmcgaw/gluetun:v3";
 
       pod = pods.torrent.ref;
       startWithPod = true;

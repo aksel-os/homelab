@@ -7,7 +7,7 @@ in
 {
   virtualisation.quadlet.containers.qbittorrent = {
     containerConfig = {
-      image = "lscr.io/linuxserver/qbittorrent:latest";
+      image = "docker.io/linuxserver/qbittorrent:latest";
 
       pod = pods.torrent.ref;
       startWithPod = true;
