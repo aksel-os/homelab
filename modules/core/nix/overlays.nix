@@ -5,7 +5,7 @@
     (final: prev: {
       # Now enables pkgs.unstable.<pkgs>
       unstable = import inputs.nixpkgs-unstable {
-        inherit (prev) system;
+        inherit (prev.stdenv.hostPlatform) system;
       };
     })
   ];
