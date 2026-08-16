@@ -11,7 +11,7 @@
     };
 
     # We open to ssh only on eth0 (and tailscale0)
-    openFirewall = false;
+    openFirewall = true;
 
     hostKeys = [
       {
