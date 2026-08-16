@@ -1,3 +1,9 @@
+{ config, ... }:
+
+let
+  inherit (config.virtualisation.quadlet) networks;
+
+in
 {
   imports = [
     ./gluetun.nix
@@ -6,7 +12,7 @@
 
   virtualisation.quadlet.pods.torrent = {
     podConfig = {
-      networks = [ "arr.network" ];
+      networks = [ networks.arr.ref ];
       publishPorts = [ "8080:8080" ];
     };
   };

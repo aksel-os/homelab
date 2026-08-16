@@ -1,7 +1,7 @@
 {
   virtualisation.quadlet.containers.audiobookshelf = {
     containerConfig = {
-      image = "ghcr.io/dvplyr/audiobookshelf:latest";
+      image = "ghcr.io/advplyr/audiobookshelf:latest";
       publishPorts = [ "13378:80" ];
       environments = {
         TZ = "Europe/Oslo";

@@ -5,7 +5,5 @@
     ./sonarr.nix
   ];
 
-  virtualisation.quadlet.pods.arr = { };
-
   virtualisation.quadlet.networks.arr = { };
 }
