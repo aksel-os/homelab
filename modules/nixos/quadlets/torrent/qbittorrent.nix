@@ -30,4 +30,9 @@ in
       Requires = [ "gluetun.service" ];
     };
   };
+
+  systemd.tmpfiles.rules = [
+    "d /var/lib/qbittorrent/config 0755 1000 1000 -"
+    "d /data/downloads 0755 1000 1000 -"
+  ];
 }

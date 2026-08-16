@@ -31,4 +31,8 @@ in
       };
     };
   };
+
+  systemd.tmpfiles.rules = [
+    "d /var/lib/gluetun/config 0755 root root -"
+  ];
 }
