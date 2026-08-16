@@ -2,7 +2,6 @@
   services.alloy = {
     enable = true;
 
-    # Note that we only expose 12345 to the podman0 interface - not LAN
     extraFlags = [ "--server.http.listen-addr=0.0.0.0:12345" ];
   };
 

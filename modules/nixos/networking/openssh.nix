@@ -10,7 +10,8 @@
       PubkeyAuthentication = "yes";
     };
 
-    openFirewall = true;
+    # We open to ssh only on eth0 (and tailscale0)
+    openFirewall = false;
 
     hostKeys = [
       {
@@ -19,4 +20,6 @@
       }
     ];
   };
+
+  networking.firewall.interfaces.eth0.allowdTCPPorts = [ 22 ];
 }
