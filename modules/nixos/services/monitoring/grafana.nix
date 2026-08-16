@@ -10,8 +10,8 @@ in
     enable = true;
 
     security = {
-      adminPassword = "$__file{${secrets."grafana/admin_password".path}}";
-      secretKey = "$__file{${secrets."grafana/secret_key".path}}";
+      admin_password = "$__file{${secrets."grafana/admin_password".path}}";
+      secret_key = "$__file{${secrets."grafana/secret_key".path}}";
     };
 
     provision = {
