@@ -1,0 +1,35 @@
+{ config, ... }:
+
+let
+  inherit (config.virtualisation.quadlet) networks;
+
+in
+{
+  virtualisation.quadlet.containers.radarr = {
+    containerConfig = {
+      image = "docker.io/linuxserver/radarr:latest";
+      networks = [ networks.arr.ref ];
+      publishPorts = [ "7878:7878" ];
+
+      environments = {
+        TZ = "Europe/Oslo";
+        PUID = "1000";
+        PGID = "1000";
+      };
+
+      volumes = [
+        "/var/lib/radarr/config:/config"
+        "/data/torrents:/data/torrents"
+      ];
+    };
+
+    unitConfig = {
+      After = [ "qbittorrent.service" ];
+      Wants = [ "qbittorrent.service" ];
+    };
+  };
+
+  systemd.tmpfiles.rules = [
+    "d /var/lib/radarr/config 0755 1000 1000 -"
+  ];
+}
