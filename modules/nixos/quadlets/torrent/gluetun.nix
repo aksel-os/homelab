@@ -7,7 +7,7 @@ in
 {
   virtualisation.quadlet.containers.gluetun = {
     containerConfig = {
-      image = "qmcgaw/gluetun:v3";
+      image = "quay.io/qmcgaw/gluetun:v3";
 
       pod = pods.torrent.ref;
       startWithPod = true;
@@ -20,7 +20,7 @@ in
       healthCmd = "wget -qO- https://am.i.mullvad.net/connected";
       healthInterval = "30s";
       healthTimeout = "10s";
-      healthRetries = "3";
+      healthRetries = 3;
 
       environments = {
         TZ = "Europe/Oslo"; # Change to target time.timeZone

@@ -6,7 +6,7 @@
 
   virtualisation.quadlet.pods.torrent = {
     podConfig = {
-      publishedPorts = [ "8080:8080" ];
+      publishPorts = [ "8080:8080" ];
     };
   };
 }
