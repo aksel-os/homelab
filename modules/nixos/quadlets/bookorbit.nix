@@ -37,6 +37,8 @@ in
     networkConfig.subnets = [ (import ./subnets.nix).bookorbit ];
   };
 
+  networking.firewall.interfaces."bookorbit".allowedUDPPorts = [ 53 ];
+
   virtualisation.quadlet.containers.bookorbit = {
     containerConfig = {
       image = "ghcr.io/bookorbit/bookorbit:latest";
