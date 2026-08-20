@@ -33,7 +33,10 @@ in
   };
 
   virtualisation.quadlet.networks.bookorbit = {
-    networkConfig.interfaceName = "dns-bookorbit";
+    networkConfig = {
+      interfaceName = "dns-bookorbit";
+      dns = true;
+    };
   };
 
   networking.firewall.interfaces."dns-bookorbit".allowedUDPPorts = [ 53 ];
