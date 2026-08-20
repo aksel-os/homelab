@@ -58,6 +58,6 @@ in
     immich=$(cat ${secrets."immich/postgres_password".path})
     $PSQL -v ON_ERROR_STOP=1 \
         -v password="$immich" \
-        -c "ALTER ROLE bookorbit WITH PASSWORD :'password';"
+        -c "ALTER ROLE immich WITH PASSWORD :'password';"
   '';
 }

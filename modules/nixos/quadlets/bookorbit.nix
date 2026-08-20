@@ -9,6 +9,7 @@ in
   sops.secrets = {
     "bookorbit/postgres_password" = {
       sopsFile = "${self}/secrets/services/bookorbit.yaml";
+      owner = "postgres";
     };
 
     "bookorbit/jwt_secret" = {
