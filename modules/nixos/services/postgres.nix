@@ -7,7 +7,7 @@
 
 let
   inherit (config.sops) secrets;
-  inherit (config.virtualisation.quadlet) networks;
+  bookorbit_subnet = (import ../quadlets/subnets.nix).quadletSubnets.bookorbit;
 in
 {
   # https://wiki.nixos.org/wiki/PostgreSQL#Major_upgrades
@@ -28,7 +28,7 @@ in
     authentication = lib.mkOverride 10 ''
       # TYPE DATABASE USER ADDRESS METHOD
       local all all peer
-      host  bookorbit  bookorbit  ${networks.bookorbit.subnet}  scram-sha-256
+      host bookorbit bookorbit ${bookorbit_subnet} scram-sha-256
     '';
 
     ensureDatabases = [

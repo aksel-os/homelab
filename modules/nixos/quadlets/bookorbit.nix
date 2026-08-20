@@ -32,8 +32,8 @@ in
     };
   };
 
-  virtualisation.quadlet.networks.bookorbit = {
-    subnet = "10.89.10.0/24";
+  virtualisation.quadlet.networks = {
+    networkConfig.subnets = [ (import ../subnets.nix).quadletSubnets.bookorbit ];
   };
 
   virtualisation.quadlet.containers.bookorbit = {
