@@ -18,22 +18,22 @@ in
     "bookorbit/setup_bootstrap_token" = {
       sopsFile = "${self}/secrets/services/bookorbit.yaml";
     };
-
-    sops.templates."bookorbit.env" = {
-      content = ''
-        POSTGRES_PASSWORD=${config.sops.placeholder."bookorbit/postgres_password"}
-        JWT_SECRET=${config.sops.placeholder."bookorbit/jwt_secret"}
-        SETUP_BOOTSTRAP_TOKEN=${config.sops.placeholder."bookorbit/setup_bootstrap_token"}
-      '';
-      owner = "root";
-      restartUnits = [
-        "bookorbit.service"
-      ];
-    };
   };
 
-  virtualisation.quadlet.networks = {
-    networkConfig.subnets = [ (import ./subnets.nix).quadletSubnets.bookorbit ];
+  sops.templates."bookorbit.env" = {
+    content = ''
+      POSTGRES_PASSWORD=${config.sops.placeholder."bookorbit/postgres_password"}
+      JWT_SECRET=${config.sops.placeholder."bookorbit/jwt_secret"}
+      SETUP_BOOTSTRAP_TOKEN=${config.sops.placeholder."bookorbit/setup_bootstrap_token"}
+    '';
+    owner = "root";
+    restartUnits = [
+      "bookorbit.service"
+    ];
+  };
+
+  virtualisation.quadlet.networks.bookorbit = {
+    networkConfig.subnets = [ (import ./subnets.nix).bookorbit ];
   };
 
   virtualisation.quadlet.containers.bookorbit = {
@@ -43,7 +43,7 @@ in
       publishPorts = [ "3030:3000" ];
 
       readOnly = true;
-      tmpfs = [ "/tmp" ];
+      tmpfses = [ "/tmp" ];
       noNewPrivileges = true;
       dropCapabilities = [ "ALL" ];
       addCapabilities = [
