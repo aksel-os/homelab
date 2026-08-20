@@ -19,6 +19,7 @@ in
 
       volumes = [
         "/var/lib/sonarr/config:/config"
+        "/mnt/nas/media/series:/tv"
         "/data/torrents:/data/torrents"
       ];
     };

@@ -19,6 +19,7 @@ in
 
       volumes = [
         "/var/lib/radarr/config:/config"
+        "/mnt/nas/media/movies:/movies"
         "/data/torrents:/data/torrents"
       ];
     };
