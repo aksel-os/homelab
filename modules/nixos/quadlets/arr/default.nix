@@ -3,6 +3,7 @@
     ./prowlarr.nix
     ./radarr.nix
     ./sonarr.nix
+    ./seerr.nix
   ];
 
   virtualisation.quadlet.networks.arr = {
