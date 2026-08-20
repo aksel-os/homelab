@@ -26,13 +26,13 @@ in
         {
           name = "Prometheus";
           type = "prometheus";
-          url = "${prometheus.listenAddress}:${toString prometheus.port}";
+          url = "http://${prometheus.listenAddress}:${toString prometheus.port}";
           editable = false;
         }
         {
           name = "Loki";
           type = "loki";
-          url = "127.0.0.1:3100";
+          url = "http://127.0.0.1:3100";
           editable = false;
         }
       ];
