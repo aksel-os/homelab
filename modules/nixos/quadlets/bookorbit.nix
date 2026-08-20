@@ -35,7 +35,6 @@ in
   virtualisation.quadlet.networks.bookorbit = {
     networkConfig = {
       interfaceName = "dns-bookorbit";
-      dns = true;
     };
   };
 
@@ -117,7 +116,7 @@ in
   };
 
   systemd.tmpfiles.rules = [
-    "d /var/lib/bookorbit/postgres 0750 root root -"
+    "d /var/lib/bookorbit/postgres 0750 999 999 -"
     "d /var/lib/bookorbit/app/data 0755 1000 1000 -"
   ];
 }
