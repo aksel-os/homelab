@@ -4,7 +4,7 @@
   imports = [
     inputs.disko.nixosModules.disko
     ./disko.nix
-    # ./nas.nix
+    ./nas.nix
     ./secrets.nix
     ./user.nix
   ];

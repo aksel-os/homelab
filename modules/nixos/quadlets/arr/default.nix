@@ -4,7 +4,8 @@
     ./radarr.nix
     ./sonarr.nix
     ./seerr.nix
-    ./lazylibrarian.nix
+    ./shelfmark.nix
+    ./bookorbit.nix
   ];
 
   virtualisation.quadlet.networks.arr = {
