@@ -22,7 +22,7 @@ in
     enableTCPIP = true;
     settings = {
       shared_preload_libraries = [ "vchord" ];
-      listen_addresses = "127.0.0.1,100.101.183.74";
+      listen_addresses = lib.mkForce "127.0.0.1,100.101.183.74";
     };
 
     authentication = lib.mkOverride 10 ''
@@ -38,6 +38,10 @@ in
     ensureUsers = [
       {
         name = "bookorbit";
+        ensureDBOwnership = true;
+      }
+      {
+        name = "immich";
         ensureDBOwnership = true;
       }
     ];
