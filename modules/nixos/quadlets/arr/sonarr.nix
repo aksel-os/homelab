@@ -7,6 +7,7 @@ in
 {
   virtualisation.quadlet.containers.sonarr = {
     containerConfig = {
+      name = "sonarr";
       image = "docker.io/linuxserver/sonarr:latest";
       networks = [ networks.arr.ref ];
       publishPorts = [ "8989:8989" ];

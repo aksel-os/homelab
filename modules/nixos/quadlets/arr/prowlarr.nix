@@ -7,6 +7,7 @@ in
 {
   virtualisation.quadlet.containers.prowlarr = {
     containerConfig = {
+      name = "prowlarr";
       image = "docker.io/linuxserver/prowlarr:latest";
       networks = [ networks.arr.ref ];
       publishPorts = [ "9696:9696" ];
