@@ -33,7 +33,7 @@ in
   };
 
   virtualisation.quadlet.networks = {
-    networkConfig.subnets = [ (import ../subnets.nix).quadletSubnets.bookorbit ];
+    networkConfig.subnets = [ (import ./subnets.nix).quadletSubnets.bookorbit ];
   };
 
   virtualisation.quadlet.containers.bookorbit = {
