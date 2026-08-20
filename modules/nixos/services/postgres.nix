@@ -43,21 +43,47 @@ in
       {
         name = "immich";
         ensureDBOwnership = true;
+        ensureClauses = {
+          superuser = true;
+        };
       }
     ];
   };
 
-  systemd.services.postgresql.postStart = ''
-    set -euo pipefail
+  # Made by an LLM as I have little interest in psql passwd management
+  # The hope is that a passwordFile type option is added in the future
+  systemd.services."postgresql-set-passwords" = {
+    description = "Set PostgreSQL role passwords from sops";
+    after = [ "postgresql.target" ];
+    requires = [ "postgresql.target" ];
+    wantedBy = [ "multi-user.target" ];
 
-    bookorbit=$(cat ${secrets."bookorbit/postgres_password".path})
-    $PSQL -v ON_ERROR_STOP=1 \
-        -v password="$bookorbit" \
-        -c "ALTER ROLE bookorbit WITH PASSWORD :'password';"
+    serviceConfig = {
+      Type = "oneshot";
+      User = "postgres";
+      RemainAfterExit = true;
+    };
 
-    immich=$(cat ${secrets."immich/postgres_password".path})
-    $PSQL -v ON_ERROR_STOP=1 \
-        -v password="$immich" \
-        -c "ALTER ROLE immich WITH PASSWORD :'password';"
-  '';
+    path = [ config.services.postgresql.package ];
+
+    script = ''
+      set -euo pipefail
+
+      psql -v ON_ERROR_STOP=1 -tA <<'EOF'
+        DO $$
+        DECLARE pw text;
+        BEGIN
+          pw := trim(both from replace(pg_read_file('${
+            secrets."bookorbit/postgres_password".path
+          }'), E'\n', '''));
+          EXECUTE format('ALTER ROLE bookorbit WITH PASSWORD %L', pw);
+
+          pw := trim(both from replace(pg_read_file('${
+            secrets."immich/postgres_password".path
+          }'), E'\n', '''));
+          EXECUTE format('ALTER ROLE immich WITH PASSWORD %L', pw);
+        END $$;
+      EOF
+    '';
+  };
 }
