@@ -7,7 +7,6 @@ in
 {
   virtualisation.quadlet.containers.radarr = {
     containerConfig = {
-      name = "radarr";
       image = "docker.io/linuxserver/radarr:latest";
       networks = [ networks.arr.ref ];
       publishPorts = [ "7878:7878" ];

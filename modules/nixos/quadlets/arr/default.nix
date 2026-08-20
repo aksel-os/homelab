@@ -5,5 +5,9 @@
     ./sonarr.nix
   ];
 
-  virtualisation.quadlet.networks.arr = { };
+  virtualisation.quadlet.networks.arr = {
+    networkConfig.interfaceName = "dns-arr";
+  };
+
+  networking.firewall.interfaces."dns-arr".allowedUDPPorts = [ 53 ];
 }
