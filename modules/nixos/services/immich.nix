@@ -21,12 +21,12 @@ in
     content = ''
       DB_PASSWORD=${config.sops.placeholder."immich/postgres_password"}
     '';
-    owner = "immich";
+    # owner = "immich";
     restartUnits = [ "immich-server.service" ];
   };
 
   services.immich = {
-    enable = true;
+    enable = false;
     package = pkgs.unstable.immich;
     host = "0.0.0.0";
     secretsFile = templates."immich.env".path;
