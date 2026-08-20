@@ -50,9 +50,14 @@ in
   systemd.services.postgresql.postStart = ''
     set -euo pipefail
 
-    bookorbit_password=$(cat ${secrets."bookorbit/postgres_password".path})
+    bookorbit=$(cat ${secrets."bookorbit/postgres_password".path})
     $PSQL -v ON_ERROR_STOP=1 \
-        -v password="$bookorbit_password" \
+        -v password="$bookorbit" \
+        -c "ALTER ROLE bookorbit WITH PASSWORD :'password';"
+
+    immich=$(cat ${secrets."immich/postgres_password".path})
+    $PSQL -v ON_ERROR_STOP=1 \
+        -v password="$immich" \
         -c "ALTER ROLE bookorbit WITH PASSWORD :'password';"
   '';
 }
