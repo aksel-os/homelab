@@ -1,6 +1,8 @@
 { config, ... }:
 
 {
+  sops.secrets."testbox/passwd".neededForUsers = true;
+
   users.users.admin = {
     isNormalUser = true;
     extraGroups = [

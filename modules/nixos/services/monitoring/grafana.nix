@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, self, ... }:
 
 let
   inherit (config.services) prometheus;
@@ -6,6 +6,20 @@ let
 
 in
 {
+  sops.secrets = {
+    "grafana/admin_password" = {
+      sopsFile = "${self}/secrets/services/grafana.yaml";
+      owner = "grafana";
+      restartUnits = [ "grafana.service" ];
+    };
+
+    "grafana/secret_key" = {
+      sopsFile = "${self}/secrets/services/grafana.yaml";
+      owner = "grafana";
+      restartUnits = [ "grafana.service" ];
+    };
+  };
+
   services.grafana = {
     enable = true;
 

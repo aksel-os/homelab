@@ -1,10 +1,15 @@
-{ config, ... }:
+{ config, self, ... }:
 
 let
   inherit (config.virtualisation.quadlet) pods;
   inherit (config.sops) secrets;
 in
 {
+  sops.secrets = {
+    "wireguard/key".sopsFile = "${self}/secrets/services/wireguard.yaml";
+    "wireguard/address".sopsFile = "${self}/secrets/services/wireguard.yaml";
+  };
+
   virtualisation.quadlet.containers.gluetun = {
     containerConfig = {
       image = "docker.io/qmcgaw/gluetun:v3";
