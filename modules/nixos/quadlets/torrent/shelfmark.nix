@@ -1,15 +1,16 @@
 { config, ... }:
 
 let
-  inherit (config.virtualisation.quadlet) networks;
+  inherit (config.virtualisation.quadlet) pods;
 
 in
 {
   virtualisation.quadlet.containers.shelfmark = {
     containerConfig = {
       image = "ghcr.io/calibrain/shelfmark:latest";
-      networks = [ networks.arr.ref ];
-      publishPorts = [ "8084:8084" ];
+
+      pod = pods.torrent.ref;
+      startWithPod = true;
 
       environments = {
         TZ = "Europe/Oslo";
@@ -25,8 +26,10 @@ in
     };
 
     unitConfig = {
-      After = [ "qbittorrent.service" ];
+      After = [ "gluetun.service" ];
       Wants = [ "qbittorrent.service" ];
+      Requires = [ "gluetun.service" ];
+      BindsTo = [ "gluetun.service" ];
     };
   };
 

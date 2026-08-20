@@ -4,7 +4,6 @@
     ./radarr.nix
     ./sonarr.nix
     ./seerr.nix
-    ./shelfmark.nix
   ];
 
   virtualisation.quadlet.networks.arr = {
