@@ -7,6 +7,7 @@
     ./arr
     ./audiobookshelf.nix
     ./jellyfin.nix
+    ./bookorbit.nix
   ];
 
   virtualisation.quadlet.enable = true;
