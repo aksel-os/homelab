@@ -13,7 +13,7 @@ in
   # https://wiki.nixos.org/wiki/PostgreSQL#Major_upgrades
 
   services.postgresql = {
-    enable = true;
+    enable = false;
     package = pkgs.postgresql_18;
     extensions = with pkgs.postgresql18Packages; [
       pgvector

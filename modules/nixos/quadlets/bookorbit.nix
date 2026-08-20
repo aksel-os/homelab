@@ -9,7 +9,6 @@ in
   sops.secrets = {
     "bookorbit/postgres_password" = {
       sopsFile = "${self}/secrets/services/bookorbit.yaml";
-      owner = "postgres";
     };
 
     "bookorbit/jwt_secret" = {
@@ -34,16 +33,41 @@ in
   };
 
   virtualisation.quadlet.networks.bookorbit = {
-    networkConfig.subnets = [ (import ./subnets.nix).bookorbit ];
+    networkConfig.interfaceName = "dns-bookorbit";
   };
 
-  networking.firewall.interfaces."bookorbit".allowedUDPPorts = [ 53 ];
+  networking.firewall.interfaces."dns-bookorbit".allowedUDPPorts = [ 53 ];
+
+  virtualisation.quadlet.containers.bookorbit-postgres = {
+    containerConfig = {
+      image = "docker.io/pgvector/pgvector:pg18";
+      networks = [ networks.bookorbit.ref ];
+
+      environments = {
+        POSTGRES_USER = "bookorbit";
+        POSTGRES_DB = "bookorbit";
+        PGDATA = "/var/lib/postgresql/data/pgdata";
+      };
+
+      environmentFiles = [ templates."bookorbit.env".path ];
+
+      volumes = [
+        "/var/lib/bookorbit/postgres:/var/lib/postgresql/data"
+      ];
+
+      healthCmd = "pg_isready -U bookorbit -d bookorbit";
+      healthInterval = "10s";
+      healthTimeout = "5s";
+      healthRetries = 10;
+      healthStartPeriod = "20s";
+    };
+  };
 
   virtualisation.quadlet.containers.bookorbit = {
     containerConfig = {
       image = "ghcr.io/bookorbit/bookorbit:latest";
       networks = [ networks.bookorbit.ref ];
-      publishPorts = [ "3030:3000" ];
+      publishPorts = [ "3030:3030" ];
 
       readOnly = true;
       tmpfses = [ "/tmp" ];
@@ -60,7 +84,7 @@ in
       environments = {
         NODE_ENV = "production";
         PORT = "3030";
-        POSTGRES_HOST = "host.containers.internal";
+        POSTGRES_HOST = "bookorbit-postgres";
         POSTGRES_PORT = "5432";
         POSTGRES_USER = "bookorbit";
         POSTGRES_DB = "bookorbit";
@@ -82,9 +106,15 @@ in
       healthRetries = 3;
       healthStartPeriod = "20s";
     };
+
+    unitConfig = {
+      After = [ "bookorbit-postgres.service" ];
+      Requires = [ "bookorbit-postgres.service" ];
+    };
   };
 
   systemd.tmpfiles.rules = [
+    "d /var/lib/bookorbit/postgres 0750 root root -"
     "d /var/lib/bookorbit/app/data 0755 1000 1000 -"
   ];
 }

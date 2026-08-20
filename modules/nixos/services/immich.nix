@@ -13,7 +13,7 @@ in
   sops.secrets = {
     "immich/postgres_password" = {
       sopsFile = "${self}/secrets/services/immich.yaml";
-      owner = "postgres";
+      # owner = "postgres";
     };
   };
 
