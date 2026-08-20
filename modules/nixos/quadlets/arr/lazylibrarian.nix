@@ -5,7 +5,7 @@ let
 
 in
 {
-  virtualisation.quadlet.containers.prowlarr = {
+  virtualisation.quadlet.containers.lazylibrarian = {
     containerConfig = {
       image = "docker.io/linuxserver/lazylibrarian:latest";
       networks = [ networks.arr.ref ];

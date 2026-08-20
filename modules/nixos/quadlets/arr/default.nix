@@ -4,6 +4,7 @@
     ./radarr.nix
     ./sonarr.nix
     ./seerr.nix
+    ./lazylibrarian.nix
   ];
 
   virtualisation.quadlet.networks.arr = {
