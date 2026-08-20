@@ -1,3 +1,5 @@
+{ config, ... }:
+
 {
   services.loki = {
     enable = true;
@@ -8,6 +10,7 @@
       server.http_listen_port = 3100;
 
       common = {
+        path_prefix = config.services.loki.dataDir;
         replication_factor = 1;
         ring.kvstore.store = "inmemory";
       };
