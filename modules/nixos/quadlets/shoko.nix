@@ -4,7 +4,7 @@ let
 
 in
 {
-  virtualisation.quadlet.containers.jellyfin = {
+  virtualisation.quadlet.containers.shoko = {
     containerConfig = {
       image = "ghcr.io/shokoanime/server:latest";
       networks = [ networks.dns.ref ];
@@ -23,6 +23,6 @@ in
   };
 
   systemd.tmpfiles.rules = [
-    "d /var/lib/shoko/cache 0755 1000 100 -"
+    "d /var/lib/shoko/config 0755 1000 100 -"
   ];
 }
