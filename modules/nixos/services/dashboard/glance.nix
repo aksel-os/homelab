@@ -1,0 +1,5 @@
+{
+  serivces.glance = {
+    enable = true;
+  };
+}

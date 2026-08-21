@@ -1,9 +1,15 @@
-{ config, ... }:
+{ config, self, ... }:
 let
   inherit (config.virtualisation.quadlet) networks;
 
 in
 {
+  sops.secrets = {
+    "jellyfin/api_key" = {
+      sopsFile = "${self}/secrets/services/jellyfin.yaml";
+    };
+  };
+
   virtualisation.quadlet.containers.jellyfin = {
     containerConfig = {
       image = "docker.io/jellyfin/jellyfin:latest";
