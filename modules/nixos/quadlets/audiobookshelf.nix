@@ -6,6 +6,15 @@ in
 {
   virtualisation.quadlet.containers.audiobookshelf = {
     containerConfig = {
+      labels = [
+        "traefik.enable=true"
+        "traefik.http.routers.audiobookshelf.rule=Host(`audiobookshelf.internal.akselos.no`)"
+        "traefik.http.routers.audiobookshelf.entrypoints=websecure"
+        "traefik.http.routers.audiobookshelf.tls=true"
+        "traefik.http.routers.audiobookshelf.tls.certresolver=letsencrypt"
+        "traefik.http.services.audiobookshelf.loadbalancer.server.port=13378"
+      ];
+
       image = "ghcr.io/advplyr/audiobookshelf:latest";
       networks = [ networks.dns.ref ];
       publishPorts = [ "13378:80" ];

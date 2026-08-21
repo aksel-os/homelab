@@ -7,6 +7,15 @@ in
 {
   virtualisation.quadlet.containers.prowlarr = {
     containerConfig = {
+      labels = [
+        "traefik.enable=true"
+        "traefik.http.routers.prowlarr.rule=Host(`prowlarr.internal.akselos.no`)"
+        "traefik.http.routers.prowlarr.entrypoints=websecure"
+        "traefik.http.routers.prowlarr.tls=true"
+        "traefik.http.routers.prowlarr.tls.certresolver=letsencrypt"
+        "traefik.http.services.prowlarr.loadbalancer.server.port=9696"
+      ];
+
       image = "docker.io/linuxserver/prowlarr:latest";
       networks = [ networks.arr.ref ];
       publishPorts = [ "9696:9696" ];

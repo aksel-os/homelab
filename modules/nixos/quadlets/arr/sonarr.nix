@@ -7,6 +7,15 @@ in
 {
   virtualisation.quadlet.containers.sonarr = {
     containerConfig = {
+      labels = [
+        "traefik.enable=true"
+        "traefik.http.routers.sonarr.rule=Host(`sonarr.internal.akselos.no`)"
+        "traefik.http.routers.sonarr.entrypoints=websecure"
+        "traefik.http.routers.sonarr.tls=true"
+        "traefik.http.routers.sonarr.tls.certresolver=letsencrypt"
+        "traefik.http.services.sonarr.loadbalancer.server.port=8989"
+      ];
+
       image = "docker.io/linuxserver/sonarr:latest";
       networks = [ networks.arr.ref ];
       publishPorts = [ "8989:8989" ];

@@ -7,6 +7,15 @@ in
 {
   virtualisation.quadlet.containers.radarr = {
     containerConfig = {
+      labels = [
+        "traefik.enable=true"
+        "traefik.http.routers.radarr.rule=Host(`radarr.internal.akselos.no`)"
+        "traefik.http.routers.radarr.entrypoints=websecure"
+        "traefik.http.routers.radarr.tls=true"
+        "traefik.http.routers.radarr.tls.certresolver=letsencrypt"
+        "traefik.http.services.radarr.loadbalancer.server.port=7878"
+      ];
+
       image = "docker.io/linuxserver/radarr:latest";
       networks = [ networks.arr.ref ];
       publishPorts = [ "7878:7878" ];

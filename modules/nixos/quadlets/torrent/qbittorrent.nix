@@ -7,6 +7,15 @@ in
 {
   virtualisation.quadlet.containers.qbittorrent = {
     containerConfig = {
+      labels = [
+        "traefik.enable=true"
+        "traefik.http.routers.qbit.rule=Host(`qbit.internal.akselos.no`)"
+        "traefik.http.routers.qbit.entrypoints=websecure"
+        "traefik.http.routers.qbit.tls=true"
+        "traefik.http.routers.qbit.tls.certresolver=letsencrypt"
+        "traefik.http.services.qbit.loadbalancer.server.port=8080"
+      ];
+
       image = "docker.io/linuxserver/qbittorrent:latest";
 
       pod = pods.torrent.ref;

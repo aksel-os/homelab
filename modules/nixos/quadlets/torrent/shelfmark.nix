@@ -7,6 +7,15 @@ in
 {
   virtualisation.quadlet.containers.shelfmark = {
     containerConfig = {
+      labels = [
+        "traefik.enable=true"
+        "traefik.http.routers.shelfmark.rule=Host(`shelfmark.internal.akselos.no`)"
+        "traefik.http.routers.shelfmark.entrypoints=websecure"
+        "traefik.http.routers.shelfmark.tls=true"
+        "traefik.http.routers.shelfmark.tls.certresolver=letsencrypt"
+        "traefik.http.services.shelfmark.loadbalancer.server.port=8084"
+      ];
+
       image = "ghcr.io/calibrain/shelfmark:latest";
 
       pod = pods.torrent.ref;

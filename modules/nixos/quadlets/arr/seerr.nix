@@ -7,6 +7,15 @@ in
 {
   virtualisation.quadlet.containers.seerr = {
     containerConfig = {
+      labels = [
+        "traefik.enable=true"
+        "traefik.http.routers.seerr.rule=Host(`seerr.internal.akselos.no`)"
+        "traefik.http.routers.seerr.entrypoints=websecure"
+        "traefik.http.routers.seerr.tls=true"
+        "traefik.http.routers.seerr.tls.certresolver=letsencrypt"
+        "traefik.http.services.seerr.loadbalancer.server.port=5055"
+      ];
+
       image = "ghcr.io/seerr-team/seerr:latest";
       networks = [
         networks.arr.ref
