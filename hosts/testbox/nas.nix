@@ -9,6 +9,7 @@
   ++ map (dir: "d /mnt/nas/media/${dir} 0755 1000 1000 -") [
     "movies" # Radarr/Jellyfin
     "series" # Sonarr/Jellyfin
+    "anime" # Sonarr/Shoko/Jellyfin
     "books" # Shelfmark/BookOrbit
     "audiobooks" # Shelfmark/Audiobookshelf
     "music"
