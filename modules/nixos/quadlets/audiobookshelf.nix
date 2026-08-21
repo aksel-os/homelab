@@ -10,6 +10,7 @@
       volumes = [
         "/var/lib/audiobookshelf/config:/config"
         "/var/lib/audiobookshelf/metadata:/metadata"
+        "/mnt/nas/media/audiobooks:/audiobooks"
       ];
     };
   };
