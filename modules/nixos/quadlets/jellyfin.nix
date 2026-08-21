@@ -14,6 +14,7 @@ in
         "/var/lib/jellyfin/cache:/cache"
         "/mnt/nas/media/movies:/movies"
         "/mnt/nas/media/series:/series"
+        "/mnt/nas/media/anime:/anime"
       ];
     };
   };
