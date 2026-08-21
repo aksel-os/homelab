@@ -58,7 +58,7 @@
 
     dynamicConfigOptions = {
       http.routers.traefik = {
-        rule = "Host(`traefik.internal.aksel.dev`)";
+        rule = "Host(`traefik.internal.akselos.no`)";
         entryPoints = [ "websecure" ];
         service = "api@internal";
         middlewares = [ "purescale" ];
