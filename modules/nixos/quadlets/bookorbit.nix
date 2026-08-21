@@ -32,18 +32,10 @@ in
     ];
   };
 
-  virtualisation.quadlet.networks.bookorbit = {
-    networkConfig = {
-      interfaceName = "dns-bookorbit";
-    };
-  };
-
-  networking.firewall.interfaces."dns-bookorbit".allowedUDPPorts = [ 53 ];
-
   virtualisation.quadlet.containers.bookorbit-postgres = {
     containerConfig = {
       image = "docker.io/pgvector/pgvector:pg18";
-      networks = [ networks.bookorbit.ref ];
+      networks = [ networks.dns.ref ];
 
       environments = {
         POSTGRES_USER = "bookorbit";
@@ -68,7 +60,7 @@ in
   virtualisation.quadlet.containers.bookorbit = {
     containerConfig = {
       image = "ghcr.io/bookorbit/bookorbit:latest";
-      networks = [ networks.bookorbit.ref ];
+      networks = [ networks.dns.ref ];
       publishPorts = [ "3030:3030" ];
 
       readOnly = true;

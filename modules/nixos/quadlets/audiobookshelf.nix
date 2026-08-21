@@ -1,7 +1,13 @@
+{ config, ... }:
+
+let
+  inherit (config.virtualisation.quadlet) networks;
+in
 {
   virtualisation.quadlet.containers.audiobookshelf = {
     containerConfig = {
       image = "ghcr.io/advplyr/audiobookshelf:latest";
+      networks = [ networks.dns.ref ];
       publishPorts = [ "13378:80" ];
       environments = {
         TZ = "Europe/Oslo";

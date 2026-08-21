@@ -8,7 +8,10 @@ in
   virtualisation.quadlet.containers.seerr = {
     containerConfig = {
       image = "ghcr.io/seerr-team/seerr:latest";
-      networks = [ networks.arr.ref ];
+      networks = [
+        networks.arr.ref
+        networks.dns.ref
+      ];
 
       publishPorts = [ "5055:5055" ];
 

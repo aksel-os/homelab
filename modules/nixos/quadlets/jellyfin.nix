@@ -1,7 +1,13 @@
+{ config, ... }:
+let
+  inherit (config.virtualisation.quadlet) networks;
+
+in
 {
   virtualisation.quadlet.containers.jellyfin = {
     containerConfig = {
       image = "docker.io/jellyfin/jellyfin:latest";
+      networks = [ networks.dns.ref ];
       publishPorts = [ "8096:8096" ];
       volumes = [
         "/var/lib/jellyfin/config:/config"
