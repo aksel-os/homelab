@@ -14,6 +14,7 @@ in
         "traefik.http.routers.shelfmark.tls=true"
         "traefik.http.routers.shelfmark.tls.certresolver=letsencrypt"
         "traefik.http.services.shelfmark.loadbalancer.server.port=8084"
+        "traefik.http.routers.shelfmark.middlewares=purescale@file"
       ];
 
       image = "ghcr.io/calibrain/shelfmark:latest";

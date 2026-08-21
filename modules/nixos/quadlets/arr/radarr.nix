@@ -14,11 +14,11 @@ in
         "traefik.http.routers.radarr.tls=true"
         "traefik.http.routers.radarr.tls.certresolver=letsencrypt"
         "traefik.http.services.radarr.loadbalancer.server.port=7878"
+        "traefik.http.routers.radarr.middlewares=purescale@file"
       ];
 
       image = "docker.io/linuxserver/radarr:latest";
       networks = [ networks.arr.ref ];
-      publishPorts = [ "7878:7878" ];
 
       environments = {
         TZ = "Europe/Oslo";

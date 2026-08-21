@@ -22,8 +22,6 @@ in
         networks.dns.ref
       ];
 
-      publishPorts = [ "5055:5055" ];
-
       environments = {
         TZ = "Europe/Oslo";
         LOG_LEVEL = "info";

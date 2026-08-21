@@ -14,11 +14,11 @@ in
         "traefik.http.routers.prowlarr.tls=true"
         "traefik.http.routers.prowlarr.tls.certresolver=letsencrypt"
         "traefik.http.services.prowlarr.loadbalancer.server.port=9696"
+        "traefik.http.routers.prowlarr.middlewares=purescale@file"
       ];
 
       image = "docker.io/linuxserver/prowlarr:latest";
       networks = [ networks.arr.ref ];
-      publishPorts = [ "9696:9696" ];
 
       environments = {
         TZ = "Europe/Oslo";

@@ -14,6 +14,7 @@ in
         "traefik.http.routers.qbit.tls=true"
         "traefik.http.routers.qbit.tls.certresolver=letsencrypt"
         "traefik.http.services.qbit.loadbalancer.server.port=8080"
+        "traefik.http.routers.qbit.middlewares=purescale@file"
       ];
 
       image = "docker.io/linuxserver/qbittorrent:latest";

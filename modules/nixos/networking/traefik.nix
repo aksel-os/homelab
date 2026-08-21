@@ -33,6 +33,11 @@
         websecure.address = ":443";
       };
 
+      api = {
+        insecure = false;
+        dashboard = true;
+      };
+
       providers.docker = {
         endpoint = "unix:///run/podman/podman.sock";
         exposedByDefault = false;
@@ -49,6 +54,20 @@
           ];
         };
       };
+    };
+
+    dynamicConfigOptions = {
+      http.routers.traefik = {
+        rule = "Host(`traefik.internal.aksel.dev`)";
+        entryPoints = [ "websecure" ];
+        service = "api@internal";
+        middlewares = [ "purescale" ];
+        tls.certResolver = "letsencrypt";
+      };
+
+      http.middlewares.purescale.ipAllowList.sourceRange = [
+        "100.64.0.0/10" # Only allow tailscale connections
+      ];
     };
   };
 }

@@ -5,11 +5,11 @@ let
 
 in
 {
+  # Port: 5299
   virtualisation.quadlet.containers.lazylibrarian = {
     containerConfig = {
       image = "docker.io/linuxserver/lazylibrarian:latest";
       networks = [ networks.arr.ref ];
-      publishPorts = [ "5299:5299" ];
 
       environments = {
         TZ = "Europe/Oslo";
