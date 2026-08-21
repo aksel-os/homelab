@@ -17,6 +17,11 @@ in
         radarr-main = {
           api_key._secret = secrets."radarr/api_key".path;
           base_url = "http://localhost:7878";
+
+          include = [
+            "hd-bluray-web"
+            "uhd-bluray-web"
+          ];
         };
       };
 
@@ -24,6 +29,11 @@ in
         sonarr-main = {
           api_key._secret = secrets."sonarr/api_key".path;
           base_url = "http://localhost:8989";
+
+          include = [
+            "web-1080p-v4"
+            "web-2160p-v4"
+          ];
         };
       };
     };
