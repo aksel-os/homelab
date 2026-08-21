@@ -13,6 +13,8 @@
         path_prefix = config.services.loki.dataDir;
         replication_factor = 1;
         ring.kvstore.store = "inmemory";
+
+        instance_addr = "127.0.0.1";
       };
 
       schema_config.configs = [
