@@ -1,7 +1,7 @@
 { config, self, ... }:
 
 let
-  inherit (config.services) prometheus;
+  inherit (config.services) prometheus grafana;
   inherit (config.sops) secrets;
 
 in
@@ -20,6 +20,24 @@ in
     };
   };
 
+  services.traefik.dynamicConfigOptions = {
+    http = {
+      routers.grafana = {
+        rule = "Host(`grafana.internal.akselos.no`)";
+        entryPoints = [ "websecure" ];
+        service = "grafana";
+        middlewares = [ "purescale" ];
+        tls.certResolver = "letsencrypt";
+      };
+
+      services.grafana.loadBalancer.servers = [
+        {
+          url = "http://${grafana.settings.server.http_addr}:${toString grafana.settings.server.http_port}";
+        }
+      ];
+    };
+  };
+
   services.grafana = {
     enable = true;
 
@@ -30,7 +48,8 @@ in
       };
 
       server = {
-        http_addr = "0.0.0.0";
+        http_addr = "127.0.0.1";
+        http_port = 3000;
       };
     };
 
