@@ -1,5 +1,5 @@
 {
-  serivces.glance = {
+  services.glance = {
     enable = true;
   };
 }

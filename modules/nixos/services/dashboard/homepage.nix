@@ -17,6 +17,7 @@ in
   services.homepage-dashboard = {
     enable = true;
     environmentFiles = [ templates."homepage.env".path ];
+    allowedHosts = "testbox.tail2662e2.ts.net:8082";
 
     settings = {
       title = "Homelab";
@@ -64,13 +65,13 @@ in
           {
             Jellyfin = {
               icon = "jellyfin.png";
-              href = "http://localhost:8069";
+              href = "http://localhost:8096";
               description = "Movies & TV";
-              siteMonitor = "https://jellyfin.home.arpa";
+              siteMonitor = "http://localhost:8096";
 
               widget = {
                 type = "jellyfin";
-                url = "http://localhost:8069";
+                url = "http://localhost:8096";
                 key = "{{HOMEPAGE_VAR_JELLYFIN_API_KEY}}";
               };
             };
