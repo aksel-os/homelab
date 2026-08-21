@@ -12,7 +12,7 @@ in
         "traefik.http.routers.audiobookshelf.entrypoints=websecure"
         "traefik.http.routers.audiobookshelf.tls=true"
         "traefik.http.routers.audiobookshelf.tls.certresolver=letsencrypt"
-        "traefik.http.services.audiobookshelf.loadbalancer.server.port=13378"
+        "traefik.http.services.audiobookshelf.loadbalancer.server.port=80"
       ];
 
       image = "ghcr.io/advplyr/audiobookshelf:latest";
