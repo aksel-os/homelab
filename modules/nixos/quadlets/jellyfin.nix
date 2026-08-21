@@ -12,6 +12,15 @@ in
 
   virtualisation.quadlet.containers.jellyfin = {
     containerConfig = {
+      labels = [
+        "traefik.enable=true"
+        "traefik.http.routers.jellyfin.rule=Host(`jellyfin.internal.akselos.no`)"
+        "traefik.http.routers.jellyfin.entrypoints=websecure"
+        "traefik.http.routers.jellyfin.tls=true"
+        "traefik.http.routers.jellyfin.tls.certresolver=letsencrypt"
+        "traefik.http.services.jellyfin.loadbalancer.server.port=8096"
+      ];
+
       image = "docker.io/jellyfin/jellyfin:latest";
       networks = [ networks.dns.ref ];
       publishPorts = [ "8096:8096" ];

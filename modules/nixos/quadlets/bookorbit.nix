@@ -59,6 +59,15 @@ in
 
   virtualisation.quadlet.containers.bookorbit = {
     containerConfig = {
+      labels = [
+        "traefik.enable=true"
+        "traefik.http.routers.bookorbit.rule=Host(`bookorbit.internal.akselos.no`)"
+        "traefik.http.routers.bookorbit.entrypoints=websecure"
+        "traefik.http.routers.bookorbit.tls=true"
+        "traefik.http.routers.bookorbit.tls.certresolver=letsencrypt"
+        "traefik.http.services.bookorbit.loadbalancer.server.port=3030"
+      ];
+
       image = "ghcr.io/bookorbit/bookorbit:latest";
       networks = [ networks.dns.ref ];
       publishPorts = [ "3030:3030" ];
