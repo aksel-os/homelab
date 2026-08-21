@@ -17,7 +17,6 @@ in
         radarr-main = {
           api_key._secret = secrets."radarr/api_key".path;
           base_url = "http://localhost:7878";
-          instance_name = "main";
         };
       };
 
@@ -25,7 +24,6 @@ in
         sonarr-main = {
           api_key._secret = secrets."sonarr/api_key".path;
           base_url = "http://localhost:8989";
-          instance_name = "main";
         };
       };
     };
