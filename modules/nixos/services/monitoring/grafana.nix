@@ -59,12 +59,14 @@ in
         {
           name = "Prometheus";
           type = "prometheus";
+          uid = "prometheus";
           url = "http://${prometheus.listenAddress}:${toString prometheus.port}";
           editable = false;
         }
         {
           name = "Loki";
           type = "loki";
+          uid = "loki";
           url = "http://127.0.0.1:3100";
           editable = false;
         }
