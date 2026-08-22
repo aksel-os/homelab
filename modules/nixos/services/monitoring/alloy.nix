@@ -25,6 +25,7 @@
       loki.source.docker "containers" {
           host       = "unix:///run/podman/podman.sock"
           targets    = discovery.docker.containers.targets
+          relabel_rules = loki.relabel.containers.rules
           forward_to = [loki.write.default.receiver]
       }
 
@@ -41,6 +42,16 @@
           rule {
               source_labels = ["__journal__systemd_unit"]
               target_label  = "unit"
+          }
+      }
+
+      loki.relabel "containers" {
+          forward_to = []
+
+          rule {
+              source_labels = ["__meta_docker_container_name"]
+              regex         = "/?(.*)"
+              target_label  = "container"
           }
       }
 
