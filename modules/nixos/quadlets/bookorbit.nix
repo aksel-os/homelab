@@ -68,7 +68,7 @@ in
         "traefik.http.services.bookorbit.loadbalancer.server.port=3030"
       ];
 
-      image = "ghcr.io/bookorbit/bookorbit:latest";
+      image = "ghcr.io/bookorbit/bookorbit:2.7.0";
       networks = [ networks.dns.ref ];
       publishPorts = [ "3030:3030" ];
 
