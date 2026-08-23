@@ -7,7 +7,7 @@
 
     settings = {
       interface = config.services.tailscale.interfaceName;
-      bind-interfaces = true;
+      bind-dynamic = true;
 
       no-resolv = true;
       server = [
