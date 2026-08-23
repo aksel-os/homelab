@@ -28,4 +28,5 @@
   ];
 
   console.keyMap = "no";
+  time.timeZone = "Europe/Oslo";
 }

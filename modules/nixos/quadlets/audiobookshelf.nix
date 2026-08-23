@@ -19,7 +19,7 @@ in
       networks = [ networks.dns.ref ];
       publishPorts = [ "13378:80" ];
       environments = {
-        TZ = "Europe/Oslo";
+        TZ = config.time.timeZone;
       };
 
       volumes = [

@@ -23,7 +23,7 @@ in
       startWithPod = true;
 
       environments = {
-        TZ = "Europe/Oslo";
+        TZ = config.time.timeZone;
         PUID = "1000";
         PGID = "1000";
       };

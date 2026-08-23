@@ -32,7 +32,7 @@ in
       healthRetries = 3;
 
       environments = {
-        TZ = "Europe/Oslo"; # Change to target time.timeZone
+        TZ = config.time.timeZone;
 
         VPN_SERVICE_PROVIDER = "mullvad";
         VPN_TYPE = "wireguard";

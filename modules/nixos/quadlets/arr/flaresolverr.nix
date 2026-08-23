@@ -12,7 +12,7 @@ in
       networks = [ networks.arr.ref ];
 
       environments = {
-        TZ = "Europe/Oslo";
+        TZ = config.time.timeZone;
       };
     };
   };

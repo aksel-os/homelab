@@ -23,7 +23,7 @@ in
       ];
 
       environments = {
-        TZ = "Europe/Oslo";
+        TZ = config.time.timeZone;
         LOG_LEVEL = "info";
       };
 

@@ -20,7 +20,7 @@ in
       publishPorts = [ "8111:8111" ];
 
       environments = {
-        TZ = "Europe/Oslo";
+        TZ = config.time.timeZone;
         PUID = "1000";
         PGID = "100";
       };
