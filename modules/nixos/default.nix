@@ -14,5 +14,7 @@
 
     vim
     git
+    dust
+    yazi
   ];
 }
