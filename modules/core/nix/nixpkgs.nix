@@ -1,6 +1,6 @@
 {
   nixpkgs.config = {
-    allowUnfree = false;
+    allowUnfree = true;
     allowBroken = false;
   };
 }
