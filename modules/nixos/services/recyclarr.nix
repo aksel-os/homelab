@@ -91,7 +91,6 @@ in
           media_naming = {
             episodes = {
               rename = true;
-              standard = "default";
               anime = "default";
             };
           };

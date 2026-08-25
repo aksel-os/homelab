@@ -34,7 +34,7 @@ in
         TZ = config.time.timeZone;
         PUID = "1000";
         PGID = "1000";
-        SONAR___SERVER___PORT = "9898";
+        SONARR__SERVER__PORT = "9898";
       };
 
       environmentFiles = [ templates."sonani.env".path ];
