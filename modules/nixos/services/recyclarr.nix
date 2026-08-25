@@ -8,6 +8,7 @@ in
   sops.secrets = {
     "radarr/api_key".sopsFile = "${self}/secrets/services/radarr.yaml";
     "sonarr/api_key".sopsFile = "${self}/secrets/services/sonarr.yaml";
+    "sonani/api_key".sopsFile = "${self}/secrets/services/sonarr.yaml";
   };
 
   services.recyclarr = {
@@ -64,6 +65,23 @@ in
               trash_id = "76a5053bdb2d1e4a8f16a69a37d46c12"; # Remux + WEB 2160p
               reset_unmatched_scores.enabled = true;
             }
+          ];
+
+          media_naming = {
+            episodes = {
+              rename = true;
+              standard = "default";
+              anime = "default";
+            };
+          };
+        };
+
+        sonarr-anime = {
+          api_key._secret = secrets."sonani/api_key".path;
+          base_url = "http://localhost:9898";
+          delete_old_custom_formats = true;
+
+          quality_profiles = [
             {
               trash_id = "20e0fc959f1f1704bed501f23bdae76f"; # Anime Remux-1080p
               reset_unmatched_scores.enabled = true;

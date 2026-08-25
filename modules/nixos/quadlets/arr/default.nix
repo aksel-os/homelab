@@ -3,6 +3,7 @@
     ./prowlarr.nix
     ./radarr.nix
     ./sonarr.nix
+    ./sonani.nix
     ./seerr.nix
     ./flaresolverr.nix
   ];

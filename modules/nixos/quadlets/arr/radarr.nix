@@ -1,10 +1,20 @@
-{ config, ... }:
+{ config, self, ... }:
 
 let
   inherit (config.virtualisation.quadlet) networks;
+  inherit (config.sops) templates;
 
 in
 {
+  sops.secrets."radarr/api_key".sopsFile = "${self}/secrets/services/radarr.yaml";
+
+  sops.templates."radarr.env" = {
+    content = ''
+      RADARR__AUTH__APIKEY=${config.sops.placeholder."radarr/api_key"}
+    '';
+    restartUnits = [ "radarr.service" ];
+  };
+
   virtualisation.quadlet.containers.radarr = {
     containerConfig = {
       labels = [
@@ -25,6 +35,8 @@ in
         PUID = "1000";
         PGID = "1000";
       };
+
+      environmentFiles = [ templates."radarr.env".path ];
 
       volumes = [
         "/var/lib/radarr/config:/config"

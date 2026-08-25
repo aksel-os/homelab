@@ -1,10 +1,20 @@
-{ config, ... }:
+{ config, self, ... }:
 
 let
   inherit (config.virtualisation.quadlet) networks;
+  inherit (config.sops) templates;
 
 in
 {
+  sops.secrets."sonarr/api_key".sopsFile = "${self}/secrets/services/sonarr.yaml";
+
+  sops.templates."sonarr.env" = {
+    content = ''
+      SONARR__AUTH__APIKEY=${config.sops.placeholder."sonarr/api_key"}
+    '';
+    restartUnits = [ "sonarr.service" ];
+  };
+
   virtualisation.quadlet.containers.sonarr = {
     containerConfig = {
       labels = [
@@ -25,6 +35,8 @@ in
         PUID = "1000";
         PGID = "1000";
       };
+
+      environmentFiles = [ templates."sonarr.env".path ];
 
       volumes = [
         "/var/lib/sonarr/config:/config"
