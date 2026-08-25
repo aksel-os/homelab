@@ -16,7 +16,7 @@ in
       [misc]
       api_key = ${config.sops.placeholder."sabnzbd/api_key"}
       nzb_key = ${config.sops.placeholder."sabnzbd/nzb_key"}
-      username = ${config.sops.placehodler."sabnzbd/username"}
+      username = ${config.sops.placeholder."sabnzbd/username"}
       password = ${config.sops.placeholder."sabnzbd/password"}
     '';
     owner = "sabnzbd";
