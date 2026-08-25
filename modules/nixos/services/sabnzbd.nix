@@ -30,6 +30,7 @@ in
         host = "127.0.0.1";
         port = 43210;
         local_ranges = "100.64.0.0/10";
+        host_whitelist = "sab.internal.akselos.no";
       };
     };
   };
