@@ -17,7 +17,6 @@ in
 
       image = "ghcr.io/advplyr/audiobookshelf:latest";
       networks = [ networks.dns.ref ];
-      publishPorts = [ "13378:80" ];
       environments = {
         TZ = config.time.timeZone;
       };
@@ -25,7 +24,7 @@ in
       volumes = [
         "/var/lib/audiobookshelf/config:/config"
         "/var/lib/audiobookshelf/metadata:/metadata"
-        "/mnt/nas/media/audiobooks:/audiobooks"
+        "/mnt/nas/media/:/data/media"
       ];
     };
   };

@@ -27,9 +27,7 @@ in
       volumes = [
         "/var/lib/jellyfin/config:/config"
         "/var/lib/jellyfin/cache:/cache"
-        "/mnt/nas/media/movies:/movies"
-        "/mnt/nas/media/series:/series"
-        "/mnt/nas/media/anime:/anime"
+        "/mnt/nas/media:/data/media"
       ];
     };
   };

@@ -28,7 +28,7 @@ in
 
       volumes = [
         "/var/lib/prowlarr/config:/config"
-        "/data/torrents:/data/torrents"
+        "/mnt/nas:/data"
       ];
     };
 

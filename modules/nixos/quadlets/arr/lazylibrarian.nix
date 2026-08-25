@@ -19,8 +19,7 @@ in
 
       volumes = [
         "/var/lib/lazylibrarian/config:/config"
-        "/mnt/nas/media/books:/books"
-        "/data/torrents:/data/torrents"
+        "/mnt/nas:/data"
       ];
     };
   };

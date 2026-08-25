@@ -41,8 +41,7 @@ in
 
       volumes = [
         "/var/lib/sonani/config:/config"
-        "/mnt/nas/media/anime:/anime"
-        "/data/torrents:/data/torrents"
+        "/mnt/nas:/data"
       ];
     };
 

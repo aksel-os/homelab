@@ -26,7 +26,7 @@ in
       };
       volumes = [
         "/var/lib/shoko/config:/home/shoko/.shoko"
-        "/mnt/nas/media/anime:/anime"
+        "/mnt/nas/media:/data/media"
       ];
     };
   };
