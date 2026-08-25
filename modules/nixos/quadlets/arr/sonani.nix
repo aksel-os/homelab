@@ -29,6 +29,7 @@ in
 
       image = "docker.io/linuxserver/sonarr:latest";
       networks = [ networks.arr.ref ];
+      publishPorts = [ "127.0.0.1:9898:9898" ];
 
       environments = {
         TZ = config.time.timeZone;
