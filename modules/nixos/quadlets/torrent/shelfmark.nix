@@ -30,7 +30,7 @@ in
 
       volumes = [
         "/var/lib/shelfmark/config:/config"
-        "/mnt/nas/media:/data"
+        "/mnt/nas:/data"
       ];
     };
 
