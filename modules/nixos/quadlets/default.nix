@@ -5,10 +5,7 @@
     inputs.quadlet-nix.nixosModules.quadlet
     ./torrent
     ./arr
-    ./audiobookshelf.nix
-    ./jellyfin.nix
-    ./shoko.nix
-    ./bookorbit.nix
+    ./media
   ];
 
   virtualisation.quadlet.enable = true;
