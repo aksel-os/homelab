@@ -6,6 +6,7 @@
     ./torrent
     ./arr
     ./media
+    ./actualbudget.nix
   ];
 
   virtualisation.quadlet.enable = true;
