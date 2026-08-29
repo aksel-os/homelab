@@ -6,6 +6,7 @@
     ./sonani.nix
     ./seerr.nix
     ./flaresolverr.nix
+    ./bindery.nix
   ];
 
   virtualisation.quadlet.networks.arr = {
