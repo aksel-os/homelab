@@ -33,12 +33,12 @@ in
 
       environments = {
         TZ = config.time.timeZone;
-
         VPN_SERVICE_PROVIDER = "mullvad";
         VPN_TYPE = "wireguard";
-
         WIREGUARD_PRIVATE_KEY_SECRETFILE = "/run/secrets/wireguard/key";
         WIREGUARD_ADDRESSES_SECRETFILE = "/run/secrets/wireguard/address";
+        HTTPPROXY = "on";
+        HTTPPROXY_STEALTH = "on";
       };
     };
   };
