@@ -9,6 +9,7 @@ in
     ./gluetun.nix
     ./qbittorrent.nix
     ./shelfmark.nix
+    ./qui.nix
   ];
 
   virtualisation.quadlet.pods.torrent = {
