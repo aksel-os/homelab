@@ -29,7 +29,6 @@ in
 
       image = "docker.io/linuxserver/radarr:latest";
       networks = [ networks.arr.ref ];
-      publishPorts = [ "127.0.0.1:7878:7878" ];
 
       environments = {
         TZ = config.time.timeZone;

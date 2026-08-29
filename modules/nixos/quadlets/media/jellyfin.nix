@@ -23,7 +23,6 @@ in
 
       image = "docker.io/jellyfin/jellyfin:latest";
       networks = [ networks.dns.ref ];
-      publishPorts = [ "8096:8096" ];
       volumes = [
         "/var/lib/jellyfin/config:/config"
         "/var/lib/jellyfin/cache:/cache"

@@ -70,7 +70,6 @@ in
 
       image = "ghcr.io/bookorbit/bookorbit:2.7.0";
       networks = [ networks.dns.ref ];
-      publishPorts = [ "3030:3030" ];
 
       readOnly = true;
       tmpfses = [ "/tmp" ];

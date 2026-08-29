@@ -17,7 +17,6 @@ in
 
       image = "ghcr.io/shokoanime/server:latest";
       networks = [ networks.dns.ref ];
-      publishPorts = [ "8111:8111" ];
 
       environments = {
         TZ = config.time.timeZone;
