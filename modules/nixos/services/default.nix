@@ -6,5 +6,6 @@
     ./postgres.nix
     ./recyclarr.nix
     ./sabnzbd.nix
+    ./restic.nix
   ];
 }
