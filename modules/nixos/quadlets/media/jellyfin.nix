@@ -36,4 +36,9 @@ in
     "d /var/lib/jellyfin/config 0755 root root -"
     "d /var/lib/jellyfin/cache 0755 root root -"
   ];
+
+  services.restic.backups.apps = {
+    paths = [ "/var/lib/jellyfin/config" ];
+    exclude = [ "/var/lib/jellyfin/cache" ];
+  };
 }

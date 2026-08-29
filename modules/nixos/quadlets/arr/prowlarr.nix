@@ -47,4 +47,8 @@ in
   systemd.tmpfiles.rules = [
     "d /var/lib/prowlarr/config 0755 1000 1000 -"
   ];
+
+  services.restic.backups.apps = {
+    paths = [ "/var/lib/prowlarr/config" ];
+  };
 }

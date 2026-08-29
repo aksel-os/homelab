@@ -34,4 +34,8 @@ in
   systemd.tmpfiles.rules = [
     "d /var/lib/shoko/config 0755 1000 100 -"
   ];
+
+  services.restic.backups.apps = {
+    paths = [ "/var/lib/shoko/config" ];
+  };
 }

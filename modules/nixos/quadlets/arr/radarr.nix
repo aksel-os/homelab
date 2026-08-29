@@ -54,4 +54,8 @@ in
   systemd.tmpfiles.rules = [
     "d /var/lib/radarr/config 0755 1000 1000 -"
   ];
+
+  services.restic.backups.apps = {
+    paths = [ "/var/lib/radarr/config" ];
+  };
 }

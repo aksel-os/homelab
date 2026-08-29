@@ -33,4 +33,11 @@ in
     "d /var/lib/audiobookshelf/config 0755 root root -"
     "d /var/lib/audiobookshelf/metadata 0755 root root -"
   ];
+
+  services.restic.backups.apps = {
+    paths = [
+      "/var/lib/audiobookshelf/config"
+      "/var/lib/audiobookshelf/metadata"
+    ];
+  };
 }

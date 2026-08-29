@@ -53,4 +53,8 @@ in
   systemd.tmpfiles.rules = [
     "d /var/lib/seerr/config 0755 1000 1000 -"
   ];
+
+  services.restic.backups.apps = {
+    paths = [ "/var/lib/seerr/config" ];
+  };
 }

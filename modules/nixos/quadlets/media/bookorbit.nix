@@ -120,4 +120,8 @@ in
     "d /var/lib/bookorbit/postgres 0750 999 999 -"
     "d /var/lib/bookorbit/app/data 0755 1000 1000 -"
   ];
+
+  services.restic.backups.apps = {
+    paths = [ "/var/lib/bookorbit/app/data" ];
+  };
 }

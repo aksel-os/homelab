@@ -55,4 +55,8 @@ in
   systemd.tmpfiles.rules = [
     "d /var/lib/sonani/config 0755 1000 1000 -"
   ];
+
+  services.restic.backups.apps = {
+    paths = [ "/var/lib/sonani/config" ];
+  };
 }
