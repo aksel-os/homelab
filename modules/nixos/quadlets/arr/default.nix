@@ -7,6 +7,7 @@
     ./seerr.nix
     ./flaresolverr.nix
     ./bindery.nix
+    ./autobrr.nix
   ];
 
   virtualisation.quadlet.networks.arr = {
