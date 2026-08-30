@@ -2,12 +2,21 @@
 
 let
   inherit (config.virtualisation.quadlet) pods;
-  inherit (config.sops) secrets;
+  inherit (config.sops) secrets templates;
 in
 {
   sops.secrets = {
-    "wireguard/key".sopsFile = "${self}/secrets/services/wireguard.yaml";
+    "wireguard/private_key".sopsFile = "${self}/secrets/services/wireguard.yaml";
+    "wireguard/preshared_key".sopsFile = "${self}/secrets/services/wireguard.yaml";
     "wireguard/address".sopsFile = "${self}/secrets/services/wireguard.yaml";
+    "wireguard/forwarded_port".sopsFile = "${self}/secrets/services/wireguard.yaml";
+  };
+
+  sops.templates."gluetun.env" = {
+    content = ''
+      FIREWALL_VPN_INPUT_PORTS=${config.sops.placeholder."wireguard/forwarded_port"}
+    '';
+    restartUnits = [ "gluetun.service" ];
   };
 
   virtualisation.quadlet.containers.gluetun = {
@@ -22,20 +31,24 @@ in
 
       volumes = [
         "/var/lib/gluetun/config:/gluetun"
-        "${secrets."wireguard/key".path}:/run/secrets/wireguard/key:ro"
+        "${secrets."wireguard/private_key".path}:/run/secrets/wireguard/private_key:ro"
+        "${secrets."wireguard/preshared_key".path}:/run/secrets/wireguard/preshared_key:ro"
         "${secrets."wireguard/address".path}:/run/secrets/wireguard/address:ro"
       ];
 
-      healthCmd = "wget -qO- https://am.i.mullvad.net/connected";
+      healthCmd = "wget -qO- https://ifconfig.co";
       healthInterval = "30s";
       healthTimeout = "10s";
       healthRetries = 3;
 
+      environmentFiles = [ templates."gluetun.env".path ];
+
       environments = {
         TZ = config.time.timeZone;
-        VPN_SERVICE_PROVIDER = "mullvad";
+        VPN_SERVICE_PROVIDER = "airvpn";
         VPN_TYPE = "wireguard";
-        WIREGUARD_PRIVATE_KEY_SECRETFILE = "/run/secrets/wireguard/key";
+        WIREGUARD_PRIVATE_KEY_SECRETFILE = "/run/secrets/wireguard/private_key";
+        WIREGUARD_PRESHARED_KEY_SECRETFILE = "/run/secrets/wireguard/preshared_key";
         WIREGUARD_ADDRESSES_SECRETFILE = "/run/secrets/wireguard/address";
         HTTPPROXY = "on";
         HTTPPROXY_STEALTH = "on";
