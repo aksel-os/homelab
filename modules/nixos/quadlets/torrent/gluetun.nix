@@ -50,6 +50,7 @@ in
         WIREGUARD_PRIVATE_KEY_SECRETFILE = "/run/secrets/wireguard/private_key";
         WIREGUARD_PRESHARED_KEY_SECRETFILE = "/run/secrets/wireguard/preshared_key";
         WIREGUARD_ADDRESSES_SECRETFILE = "/run/secrets/wireguard/address";
+        WIREGUARD_MTU = "1280";
         HTTPPROXY = "on";
         HTTPPROXY_STEALTH = "on";
       };
