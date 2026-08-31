@@ -21,13 +21,19 @@ in
         "traefik.http.services.jellyfin.loadbalancer.server.port=8096"
       ];
 
-      image = "docker.io/jellyfin/jellyfin:latest";
+      image = "ghcr.io/jellyfin/jellyfin:12.0-rc6";
       networks = [ networks.dns.ref ];
       volumes = [
         "/var/lib/jellyfin/config:/config"
         "/var/lib/jellyfin/cache:/cache"
         "/mnt/nas/media:/data/media"
       ];
+
+      healthCmd = "curl -f http://localhost:8096/health || exit 1";
+      healthInterval = "30s";
+      healthTimeout = "10s";
+      healthRetries = 3;
+      healthStartPeriod = "60s";
     };
   };
 

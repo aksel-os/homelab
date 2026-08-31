@@ -36,11 +36,6 @@ in
         "${secrets."wireguard/address".path}:/run/secrets/wireguard/address:ro"
       ];
 
-      healthCmd = "wget -qO- https://ifconfig.co";
-      healthInterval = "30s";
-      healthTimeout = "10s";
-      healthRetries = 3;
-
       environmentFiles = [ templates."gluetun.env".path ];
 
       environments = {

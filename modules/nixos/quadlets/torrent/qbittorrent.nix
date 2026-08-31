@@ -29,6 +29,12 @@ in
         PGID = "1000";
       };
 
+      healthCmd = "curl -f http://localhost:8080/ || exit 1";
+      healthInterval = "30s";
+      healthTimeout = "10s";
+      healthRetries = 3;
+      healthStartPeriod = "30s";
+
       volumes = [
         "/var/lib/qbittorrent/config:/config"
         "/mnt/nas/torrents:/data/torrents"
