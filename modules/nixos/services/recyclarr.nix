@@ -17,7 +17,7 @@ in
       radarr = {
         radarr-main = {
           api_key._secret = secrets."radarr/api_key".path;
-          base_url = "http://localhost:7878";
+          base_url = "https://radarr.internal.akselos.no";
           delete_old_custom_formats = true;
 
           quality_profiles = [
@@ -53,7 +53,7 @@ in
       sonarr = {
         sonarr-main = {
           api_key._secret = secrets."sonarr/api_key".path;
-          base_url = "http://localhost:8989";
+          base_url = "https://sonarr.internal.akselos.no";
           delete_old_custom_formats = true;
 
           quality_profiles = [
@@ -78,7 +78,7 @@ in
 
         sonarr-anime = {
           api_key._secret = secrets."sonani/api_key".path;
-          base_url = "http://localhost:9898";
+          base_url = "https://sonani.internal.akselos.no";
           delete_old_custom_formats = true;
 
           quality_profiles = [
