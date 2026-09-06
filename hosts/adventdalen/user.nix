@@ -1,7 +1,7 @@
 { config, ... }:
 
 {
-  sops.secrets."testbox/passwd".neededForUsers = true;
+  sops.secrets."adventdalen/passwd".neededForUsers = true;
 
   users.users.admin = {
     isNormalUser = true;
@@ -19,6 +19,6 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFXXVv2ocQ7Rad2icTVKNzv5aZDB0vOqayrfZ5uv/Cok admin-homelab"
     ];
 
-    hashedPasswordFile = config.sops.secrets."testbox/passwd".path;
+    hashedPasswordFile = config.sops.secrets."adventdalen/passwd".path;
   };
 }
