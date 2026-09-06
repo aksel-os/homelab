@@ -19,7 +19,9 @@
 
   networking.hostName = "adventdalen";
   networking.useDHCP = true;
-  networking.firewall.interfaces.enp4s0.allowedTCPPorts = [ 22 ];
+  networking.networkmanager.enable = true;
+  networking.firewall.interfaces."enp4s0".allowedTCPPorts = [ 22 ];
+  networking.firewall.interfaces."wlp5s0".allowedTCPPorts = [ 22 ];
 
   boot.initrd.availableKernelModules = [
     "xhci_pci"
