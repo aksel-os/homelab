@@ -18,7 +18,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "adventdalen";
-  networking.useDHCP = true;
   networking.networkmanager.enable = true;
   networking.firewall.interfaces."enp4s0".allowedTCPPorts = [ 22 ];
   networking.firewall.interfaces."wlp5s0".allowedTCPPorts = [ 22 ];
