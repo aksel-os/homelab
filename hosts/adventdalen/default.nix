@@ -8,6 +8,7 @@
     ./nas.nix
     ./secrets.nix
     ./user.nix
+    ./network.nix
   ];
 
   nixpkgs.hostPlatform = {

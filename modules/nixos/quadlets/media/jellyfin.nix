@@ -21,6 +21,11 @@ in
         "traefik.http.services.jellyfin.loadbalancer.server.port=8096"
       ];
 
+      publishPorts = [
+        "192.168.10.10:8096:8096/tcp"
+        "192.168.10.10:7359:7359/udp"
+      ];
+
       image = "ghcr.io/jellyfin/jellyfin:12.0-rc6";
       networks = [ networks.dns.ref ];
       volumes = [
