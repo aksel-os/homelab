@@ -20,6 +20,4 @@
       }
     ];
   };
-
-  networking.firewall.interfaces.eth0.allowedTCPPorts = [ 22 ];
 }

@@ -30,12 +30,5 @@ in
     package = pkgs.unstable.immich;
     host = "0.0.0.0";
     secretsFile = templates."immich.env".path;
-
-    database = {
-      enable = false;
-      host = "127.0.0.1";
-      name = "immich";
-      user = "immich";
-    };
   };
 }
