@@ -15,7 +15,7 @@
         "1.0.0.1"
       ];
 
-      address = [ "/internal.akselos.no/100.101.183.74" ];
+      address = [ "/internal.akselos.no/100.99.136.0" ];
     };
   };
 }
