@@ -28,26 +28,26 @@ in
       checkOpts = [ "--with-cache" ];
     };
 
-    postgres = {
-      repository = "/mnt/nas/backups/restic/postgres";
-      passwordFile = secrets."restic/repository_password".path;
-      initialize = true;
-      user = "postgres";
-
-      command = [
-        "${config.services.postgresql.package}/bin/pg_dumpall"
-      ];
-
-      timerConfig = {
-        OnCalendar = "daily";
-        RandomizedDelaySec = "30m";
-        Persistent = true;
-      };
-
-      pruneOpts = [
-        "--keep-daily 7"
-        "--keep-weekly 4"
-      ];
-    };
+    #   postgres = {
+    #     repository = "/mnt/nas/backups/restic/postgres";
+    #     passwordFile = secrets."restic/repository_password".path;
+    #     initialize = true;
+    #     user = "postgres";
+    #
+    #     command = [
+    #       "${config.services.postgresql.package}/bin/pg_dumpall"
+    #     ];
+    #
+    #     timerConfig = {
+    #       OnCalendar = "daily";
+    #       RandomizedDelaySec = "30m";
+    #       Persistent = true;
+    #     };
+    #
+    #     pruneOpts = [
+    #       "--keep-daily 7"
+    #       "--keep-weekly 4"
+    #     ];
+    #   };
   };
 }
