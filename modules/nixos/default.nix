@@ -15,6 +15,7 @@
     vim
     git
     dust
+    just
     yazi
   ];
 }
