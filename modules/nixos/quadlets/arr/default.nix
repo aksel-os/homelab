@@ -9,6 +9,7 @@
     ./bindery.nix
     ./autobrr.nix
     ./cleanuparr.nix
+    ./jackett.nix
   ];
 
   virtualisation.quadlet.networks.arr = {
