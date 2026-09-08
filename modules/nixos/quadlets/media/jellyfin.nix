@@ -26,7 +26,7 @@ in
         "192.168.0.100:7359:7359/udp"
       ];
 
-      image = "ghcr.io/jellyfin/jellyfin:12.0-rc6";
+      image = "ghcr.io/jellyfin/jellyfin:12.0";
       networks = [ networks.dns.ref ];
       volumes = [
         "/var/lib/jellyfin/config:/config"
