@@ -8,6 +8,7 @@ in
   imports = [
     ./gluetun.nix
     ./qbittorrent.nix
+    ./qbitrace.nix
     ./shelfmark.nix
     ./qui.nix
   ];
