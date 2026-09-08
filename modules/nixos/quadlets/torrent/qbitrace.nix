@@ -37,7 +37,7 @@ in
 
       volumes = [
         "/var/lib/qbitrace/config:/config"
-        "/mnt/nas/torrents:/data/torrents"
+        "/var/lib/qbitrace/downloads:/data/torrents"
       ];
     };
 
@@ -50,5 +50,6 @@ in
 
   systemd.tmpfiles.rules = [
     "d /var/lib/qbitrace/config 0755 1000 1000 -"
+    "d /var/lib/qbitrace/downloads 0755 1000 1000 -"
   ];
 }
