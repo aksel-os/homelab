@@ -19,6 +19,9 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.supportedFilesystems = {
+    nfs = true;
+  };
 
   networking.hostName = "adventdalen";
   networking.networkmanager.enable = true;
