@@ -37,6 +37,10 @@ in
       Requires = [ "gluetun.service" ];
       BindsTo = [ "gluetun.service" ];
     };
+
+    serviceConfig = {
+      RuntimeMaxSec = "3600";
+    };
   };
 
   systemd.tmpfiles.rules = [
