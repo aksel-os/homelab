@@ -20,7 +20,6 @@ in
       image = "docker.io/linuxserver/firefox:latest";
 
       pod = pods.torrent.ref;
-      startWithPod = true;
 
       environments = {
         TZ = config.time.timeZone;
@@ -35,7 +34,6 @@ in
 
     unitConfig = {
       After = [ "gluetun.service" ];
-      Wants = [ "qbittorrent.service" ];
       Requires = [ "gluetun.service" ];
       BindsTo = [ "gluetun.service" ];
     };
