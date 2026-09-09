@@ -3,6 +3,10 @@
 {
   sops.secrets."adventdalen/passwd".neededForUsers = true;
 
+  users.groups.nas = {
+    gid = 1000;
+  };
+
   users.users.admin = {
     isNormalUser = true;
     extraGroups = [
@@ -12,7 +16,7 @@
       "networkmanager"
       "sops-nix"
       "podman"
-
+      "nas"
     ];
 
     openssh.authorizedKeys.keys = [
