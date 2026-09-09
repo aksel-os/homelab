@@ -7,5 +7,6 @@
     ./recyclarr.nix
     ./sabnzbd.nix
     ./restic.nix
+    # ./cockpit.nix
   ];
 }
