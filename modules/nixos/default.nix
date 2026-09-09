@@ -17,5 +17,7 @@
     dust
     just
     yazi
+
+    lm_sensors
   ];
 }

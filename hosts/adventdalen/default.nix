@@ -33,6 +33,8 @@
     "nvme"
     "usb_storage"
     "sd_mod"
+    "coretemp"
+    "thinkpad_acpi"
   ];
 
   console.keyMap = "no";
