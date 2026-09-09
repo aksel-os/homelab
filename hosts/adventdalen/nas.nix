@@ -4,6 +4,11 @@
     fsType = "nfs";
     options = [ "nfsvers=4.2" ];
   };
+  fileSystems."/mnt/backups/restic" = {
+    device = "100.111.132.45:/mnt/tank/backups/restic";
+    fsType = "nfs";
+    options = [ "nfsvers=4.2" ];
+  };
 
   services.traefik.dynamicConfigOptions = {
     http = {

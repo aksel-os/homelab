@@ -8,7 +8,7 @@ in
 
   services.restic.backups = {
     apps = {
-      repository = "/mnt/nas/backups/restic/apps";
+      repository = "/mnt/backups/restic/apps";
       passwordFile = secrets."restic/repository_password".path;
       initialize = true;
 
