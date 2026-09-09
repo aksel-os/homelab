@@ -23,4 +23,10 @@
     "audiobooks" # Shelfmark/Audiobookshelf
     "music"
   ];
+
+  fileSystems."/mnt/rnas" = {
+    device = "100.111.132.45:/mnt/tank/data";
+    fsType = "nfs";
+    options = [ "nfsvers=4.2" ];
+  };
 }
