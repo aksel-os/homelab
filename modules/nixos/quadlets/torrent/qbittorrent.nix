@@ -17,7 +17,7 @@ in
         "traefik.http.routers.qbit.middlewares=purescale@file"
       ];
 
-      image = "docker.io/linuxserver/qbittorrent:latest";
+      image = "docker.io/linuxserver/qbittorrent:5.2.3";
 
       pod = pods.torrent.ref;
       startWithPod = true;
