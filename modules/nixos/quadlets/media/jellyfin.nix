@@ -34,6 +34,8 @@ in
         "/mnt/nas/media:/data/media"
       ];
 
+      devices = [ "/dev/dri:/dev/dri" ];
+
       healthCmd = "curl -f http://localhost:8096/health || exit 1";
       healthInterval = "30s";
       healthTimeout = "10s";
