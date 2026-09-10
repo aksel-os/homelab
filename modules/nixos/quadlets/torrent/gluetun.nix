@@ -48,6 +48,7 @@ in
         WIREGUARD_MTU = "1280";
         HTTPPROXY = "on";
         HTTPPROXY_STEALTH = "on";
+        SERVER_REGIONS = "Europe";
       };
     };
   };

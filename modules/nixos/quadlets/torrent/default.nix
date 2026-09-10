@@ -12,6 +12,7 @@ in
     ./shelfmark.nix
     ./qui.nix
     ./browser.nix
+    ./tracker.nix
   ];
 
   virtualisation.quadlet.pods.torrent = {
