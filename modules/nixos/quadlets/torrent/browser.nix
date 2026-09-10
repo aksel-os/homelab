@@ -40,6 +40,7 @@ in
 
     serviceConfig = {
       RuntimeMaxSec = "3600";
+      Restart = "no";
     };
   };
 
