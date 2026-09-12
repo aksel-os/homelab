@@ -58,6 +58,10 @@ in
 
           quality_profiles = [
             {
+              trash_id = "72dae194fc92bf828f32cde7744e51a1"; # WEB 1080p
+              reset_unmatched_scores.enabled = true;
+            }
+            {
               trash_id = "fe9470e577c300a5ad9a3274f6d1cdf2"; # Remux + WEB 1080p
               reset_unmatched_scores.enabled = true;
             }
