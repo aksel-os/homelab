@@ -7,6 +7,7 @@
     ./arr
     ./media
     ./actualbudget.nix
+    ./sparkyfitness.nix
   ];
 
   virtualisation.quadlet.enable = true;
