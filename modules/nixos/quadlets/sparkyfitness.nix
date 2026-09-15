@@ -123,7 +123,7 @@ in
   };
 
   systemd.tmpfiles.rules = [
-    "d /var/lib/sparkyfitness/postgres 0750 1000 1000 -"
+    "d /var/lib/sparkyfitness/postgres 0750 70 70 -" # postgres:postgres
     "d /var/lib/sparkyfitness/backup 0755 1000 1000 -"
     "d /var/lib/sparkyfitness/uploads 0755 1000 1000 -"
   ];
