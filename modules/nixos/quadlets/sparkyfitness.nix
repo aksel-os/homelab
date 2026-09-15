@@ -72,7 +72,7 @@ in
         TZ = config.time.timeZone;
         SPARKY_FITNESS_LOG_LEVEL = "ERROR";
         SPARKY_FITNESS_PUBLIC_API_DOCS = "false";
-        SPARKY_FITNESS_DISABLE_SIGNUP = "false";
+        SPARKY_FITNESS_DISABLE_SIGNUP = "true";
         SPARKY_FITNESS_DEMO_MODE = "false";
         SPARKY_FITNESS_TRUSTED_PROXY_HOPS = "2"; # Traefik + frontend's own nginx
         PUID = "1000";
