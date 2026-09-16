@@ -17,7 +17,7 @@ in
         "traefik.http.routers.prowlarr.middlewares=purescale@file"
       ];
 
-      image = "docker.io/linuxserver/prowlarr:latest";
+      image = "docker.io/linuxserver/prowlarr:2.5.2.5491-ls160";
       networks = [ networks.arr.ref ];
 
       environments = {

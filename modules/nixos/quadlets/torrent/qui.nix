@@ -16,7 +16,7 @@ in
         "traefik.http.routers.qui.middlewares=purescale@file"
       ];
 
-      image = "ghcr.io/autobrr/qui:latest";
+      image = "ghcr.io/autobrr/qui:v1.29.0";
       networks = [ networks.arr.ref ];
 
       environments = {
