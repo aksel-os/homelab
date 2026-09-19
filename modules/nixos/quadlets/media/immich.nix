@@ -90,6 +90,7 @@ in
 
       environments = {
         TZ = config.time.timeZone;
+        HOST = "0.0.0.0";
         DB_HOSTNAME = "immich-postgres";
         DB_USERNAME = "immich";
         DB_DATABASE_NAME = "immich";
