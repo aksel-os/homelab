@@ -9,6 +9,11 @@
     fsType = "nfs";
     options = [ "nfsvers=4.2" ];
   };
+  fileSystems."/mnt/photos" = {
+    device = "100.111.132.45:/mnt/tank/photos";
+    fsType = "nfs";
+    options = [ "nfsvers=4.2" ];
+  };
 
   services.traefik.dynamicConfigOptions = {
     http = {

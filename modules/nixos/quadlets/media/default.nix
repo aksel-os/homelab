@@ -5,5 +5,6 @@
     ./shoko.nix
     ./bookorbit.nix
     ./karakeep.nix
+    ./immich.nix
   ];
 }
