@@ -49,8 +49,8 @@
         dnsChallenge = {
           provider = "domeneshop";
           resolvers = [
-            "1.1.1.1:53"
-            "1.0.0.1:53"
+            "ns1.hyp.net:53"
+            "ns2.hyp.net:53"
           ];
         };
       };
