@@ -28,7 +28,7 @@ in
 
   virtualisation.quadlet.containers.immich-postgres = {
     containerConfig = {
-      image = "ghcr.io/immich-app/postgres:14-vectorchord0.3.0";
+      image = "ghcr.io/immich-app/postgres:14-vectorchord0.4.3-pgvectors0.2.0";
       networks = [ networks.dns.ref ];
 
       environments = {
@@ -39,26 +39,15 @@ in
 
       environmentFiles = [ templates."immich-postgres.env".path ];
 
-      volumes = [
-        "/var/lib/immich/postgres:/var/lib/postgresql/data"
-      ];
-
-      healthCmd = "pg_isready -U immich -d immich";
-      healthInterval = "10s";
-      healthTimeout = "5s";
-      healthRetries = 10;
-      healthStartPeriod = "20s";
+      volumes = [ "/var/lib/immich/postgres:/var/lib/postgresql/data" ];
     };
   };
 
   virtualisation.quadlet.containers.immich-redis = {
     containerConfig = {
-      image = "docker.io/valkey/valkey:8-bookworm";
+      image = "docker.io/valkey/valkey:9";
       networks = [ networks.dns.ref ];
-
-      volumes = [
-        "/var/lib/immich/redis:/data"
-      ];
+      volumes = [ "/var/lib/immich/redis:/data" ];
     };
   };
 
@@ -104,12 +93,6 @@ in
         "/mnt/photos:/data"
         "/etc/localtime:/etc/localtime:ro"
       ];
-
-      healthCmd = "wget --no-verbose --tries=1 --spider http://localhost:2283/api/server/ping || exit 1";
-      healthInterval = "30s";
-      healthTimeout = "10s";
-      healthRetries = 3;
-      healthStartPeriod = "60s";
     };
 
     unitConfig = {

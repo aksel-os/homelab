@@ -33,8 +33,6 @@
         websecure.address = ":443";
       };
 
-      log.level = "DEBUG";
-
       api = {
         insecure = false;
         dashboard = true;
