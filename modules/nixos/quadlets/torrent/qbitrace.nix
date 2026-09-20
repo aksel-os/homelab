@@ -38,6 +38,7 @@ in
       volumes = [
         "/var/lib/qbitrace/config:/config"
         "/var/lib/qbitrace/downloads:/data/torrents"
+        "/var/lib/browser/config/Downloads:/watch"
       ];
     };
 
