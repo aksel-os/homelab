@@ -6,5 +6,6 @@
     ./bookorbit.nix
     ./karakeep.nix
     ./immich.nix
+    ./romm.nix
   ];
 }
