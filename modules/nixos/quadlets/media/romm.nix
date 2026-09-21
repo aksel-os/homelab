@@ -98,12 +98,6 @@ in
         ENABLE_SCHEDULED_RESCAN = "true";
         SCAN_WORKERS = "4";
         WEB_SERVER_CONCURRENCY = "4";
-
-        # Optional metadata providers
-        # SCREENSCRAPER_USER = "";
-        # SCREENSCRAPER_PASSWORD = "";
-        # RETROACHIEVEMENTS_API_KEY = "";
-        # STEAMGRIDDB_API_KEY = "";
         HASHEOUS_API_ENABLED = "true";
       };
 
@@ -112,7 +106,7 @@ in
         "/var/lib/romm/redis-data:/redis-data"
         "/var/lib/romm/assets:/romm/assets"
         "/var/lib/romm/config:/romm/config"
-        "/mnt/nas/media/roms:/romm/library"
+        "/mnt/nas/media/games:/romm/library"
       ];
 
       healthCmd = "curl -f http://localhost:8080/api/heartbeat || exit 1";
