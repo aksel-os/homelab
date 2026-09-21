@@ -9,7 +9,7 @@ let
   inherit (config.sops) templates;
   inherit (config.virtualisation.quadlet) networks;
 
-  rommConfig = pkgs.formats.yaml.generate "romm-config.yml" {
+  rommConfig = (pkgs.formats.yaml { }).generate "romm-initial-config.yml" {
     filesystem = {
       structure = {
         default = "roms/{platform}/{game}";
