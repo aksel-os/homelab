@@ -23,12 +23,20 @@ in
     "romm/db_password".sopsFile = "${self}/secrets/services/romm.yaml";
     "romm/auth_secret_key".sopsFile = "${self}/secrets/services/romm.yaml";
     "romm/mariadb_root_password".sopsFile = "${self}/secrets/services/romm.yaml";
+    "romm/igdb_client_id".sopsFile = "${self}/secrets/services/romm.yaml";
+    "romm/igdb_client_secret".sopsFile = "${self}/secrets/services/romm.yaml";
+    "romm/steamgriddb_api_key".sopsFile = "${self}/secrets/services/romm.yaml";
+    "romm/retroachievements_api_key".sopsFile = "${self}/secrets/services/romm.yaml";
   };
 
   sops.templates."romm.env" = {
     content = ''
       DB_PASSWD=${config.sops.placeholder."romm/db_password"}
       ROMM_AUTH_SECRET_KEY=${config.sops.placeholder."romm/auth_secret_key"}
+      IGDB_CLIENT_ID=${config.sops.placeholder."romm/igdb_client_id"}
+      IGDB_CLIENT_SECRET=${config.sops.placeholder."romm/igdb_client_secret"}
+      STEAMGRIDDB_API_KEY=${config.sops.placeholder."romm/steamgriddb_api_key"}
+      RETROACHIEVEMENTS_API_KEY=${config.sops.placeholder."romm/retroachievements_api_key"}
     '';
     restartUnits = [ "romm.service" ];
   };
