@@ -19,9 +19,7 @@
 
   services.wakapi = {
     enable = true;
-    database = {
-      createLocally = true;
-    };
+    database.createLocally = true;
 
     settings = {
       server = {
@@ -31,7 +29,7 @@
 
       db = {
         dialect = "postgres";
-        host = "/run/postgres";
+        host = "/run/postgresql";
         port = 5432;
         name = "wakapi";
         user = "wakapi";
@@ -39,7 +37,7 @@
     };
   };
 
-  services.postgres = {
+  services.postgresql = {
     ensureDatabases = [ "wakapi" ];
     ensureUsers = [
       {
