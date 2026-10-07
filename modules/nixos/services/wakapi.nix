@@ -20,6 +20,7 @@
   services.wakapi = {
     enable = true;
     database = {
+      dialect = "postgres";
       createLocally = true;
     };
 
