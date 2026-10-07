@@ -38,4 +38,14 @@
       };
     };
   };
+
+  services.postgres = {
+    ensureDatabases = [ "wakapi" ];
+    ensureUsers = [
+      {
+        name = "wakapi";
+        ensureDBOwnership = true;
+      }
+    ];
+  };
 }

@@ -2,7 +2,7 @@
   imports = [
     ./monitoring
     ./dashboard
-    # ./postgres.nix
+    ./postgres.nix
     ./recyclarr.nix
     ./sabnzbd.nix
     ./restic.nix
