@@ -20,7 +20,6 @@
   services.wakapi = {
     enable = true;
     database = {
-      dialect = "postgres";
       createLocally = true;
     };
 
@@ -28,6 +27,14 @@
       server = {
         port = 8642;
         public_url = "https://wakapi.internal.akselos.no";
+      };
+
+      db = {
+        dialect = "postgres";
+        host = "/run/postgres";
+        port = 5432;
+        name = "wakapi";
+        user = "wakapi";
       };
     };
   };
