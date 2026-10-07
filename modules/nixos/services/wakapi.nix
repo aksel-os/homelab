@@ -55,7 +55,7 @@ in
       };
 
       security = {
-        allow_signup = true;
+        allow_signup = false;
         disable_frontpage = true;
       };
     };
