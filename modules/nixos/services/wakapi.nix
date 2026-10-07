@@ -1,4 +1,22 @@
+{ self, config, ... }:
+
+let
+  inherit (config.sops) templates;
+
+in
 {
+  sops.secrets."wakapi/password_salt" = {
+    sopsFile = "${self}/secrets/services/wakapi.yaml";
+  };
+
+  sops.templates."wakapi.env" = {
+    content = ''
+      WAKAPI_PASSWORD_SALT=${config.sops.placeholder."wakapi/password_salt"}
+    '';
+    owner = "wakapi";
+    restartUnits = [ "wakapi.service" ];
+  };
+
   services.traefik.dynamicConfigOptions = {
     http = {
       routers.wakapi = {
@@ -19,6 +37,7 @@
 
   services.wakapi = {
     enable = true;
+    environmentFiles = [ templates."wakapi.env".path ];
     database.createLocally = true;
 
     settings = {
@@ -33,6 +52,11 @@
         port = 5432;
         name = "wakapi";
         user = "wakapi";
+      };
+
+      security = {
+        allow_signup = true;
+        disable_frontpage = true;
       };
     };
   };
