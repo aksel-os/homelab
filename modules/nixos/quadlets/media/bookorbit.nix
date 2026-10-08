@@ -40,7 +40,9 @@ in
   virtualisation.quadlet.containers.bookorbit-postgres = {
     containerConfig = {
       image = "docker.io/pgvector/pgvector:pg18";
-      networks = [ networks.dns.ref ];
+      networks = [
+        networks.dns.ref
+      ];
 
       environments = {
         POSTGRES_USER = "bookorbit";
@@ -74,7 +76,10 @@ in
       ];
 
       image = "ghcr.io/bookorbit/bookorbit:3.3.0";
-      networks = [ networks.dns.ref ];
+      networks = [
+        networks.dns.ref
+        networks.arr.ref
+      ];
 
       readOnly = true;
       tmpfses = [ "/tmp" ];
