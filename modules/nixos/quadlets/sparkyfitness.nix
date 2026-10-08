@@ -57,7 +57,7 @@ in
 
   virtualisation.quadlet.containers.sparkyfitness-server = {
     containerConfig = {
-      image = "docker.io/codewithcj/sparkyfitness_server:v1.7.1";
+      image = "docker.io/codewithcj/sparkyfitness_server:v1.8.0";
       networks = [ networks.dns.ref ];
 
       environmentFiles = [ templates."sparkyfitness-server.env".path ];
@@ -103,7 +103,7 @@ in
         "traefik.http.routers.sparkyfitness.middlewares=purescale@file"
       ];
 
-      image = "docker.io/codewithcj/sparkyfitness:v1.7.1";
+      image = "docker.io/codewithcj/sparkyfitness:v1.8.0";
       networks = [ networks.dns.ref ];
 
       environments = {

@@ -27,7 +27,7 @@ in
         "traefik.http.routers.radarr.middlewares=purescale@file"
       ];
 
-      image = "docker.io/linuxserver/radarr:6.3.0.10514-ls316";
+      image = "docker.io/linuxserver/radarr:6.4.4.10685-ls318";
       networks = [ networks.arr.ref ];
 
       environments = {

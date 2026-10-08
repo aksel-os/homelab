@@ -17,7 +17,7 @@ in
         "traefik.http.routers.browser.middlewares=purescale@file"
       ];
 
-      image = "docker.io/linuxserver/firefox:latest";
+      image = "docker.io/linuxserver/firefox:1155.0.1";
 
       pod = pods.torrent.ref;
 
