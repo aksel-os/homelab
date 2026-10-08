@@ -12,6 +12,7 @@
     gallery-dl
     yt-dlp
 
+    unzip
     vim
     git
     dust
