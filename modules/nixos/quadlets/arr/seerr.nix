@@ -16,7 +16,7 @@ in
         "traefik.http.services.seerr.loadbalancer.server.port=5055"
       ];
 
-      image = "ghcr.io/seerr-team/seerr:latest";
+      image = "ghcr.io/seerr-team/seerr:v3.5.0";
       networks = [
         networks.arr.ref
         networks.dns.ref
