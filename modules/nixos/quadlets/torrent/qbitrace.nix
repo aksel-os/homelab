@@ -38,6 +38,7 @@ in
       volumes = [
         "/var/lib/qbitrace/config:/config"
         "/var/lib/qbitrace/downloads:/data/torrents"
+        "/var/lib/qbitrace/watch:/watch"
       ];
     };
 
@@ -51,5 +52,6 @@ in
   systemd.tmpfiles.rules = [
     "d /var/lib/qbitrace/config 0755 1000 1000 -"
     "d /var/lib/qbitrace/downloads 0755 1000 1000 -"
+    "d /var/lib/qbitrace/watch 0755 1000 1000 -"
   ];
 }
