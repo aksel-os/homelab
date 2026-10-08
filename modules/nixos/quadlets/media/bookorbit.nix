@@ -18,6 +18,10 @@ in
     "bookorbit/setup_bootstrap_token" = {
       sopsFile = "${self}/secrets/services/bookorbit.yaml";
     };
+
+    "bookorbit/request_encryption_key" = {
+      sopsFile = "${self}/secrets/services/bookorbit.yaml";
+    };
   };
 
   sops.templates."bookorbit.env" = {
@@ -25,6 +29,7 @@ in
       POSTGRES_PASSWORD=${config.sops.placeholder."bookorbit/postgres_password"}
       JWT_SECRET=${config.sops.placeholder."bookorbit/jwt_secret"}
       SETUP_BOOTSTRAP_TOKEN=${config.sops.placeholder."bookorbit/setup_bootstrap_token"}
+      BOOK_REQUEST_ENCRYPTION_KEY=${config.sops.placeholder."bookorbit/request_encryption_key"}
     '';
     owner = "root";
     restartUnits = [
