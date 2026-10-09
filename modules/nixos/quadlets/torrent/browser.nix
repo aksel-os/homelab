@@ -30,6 +30,8 @@ in
       volumes = [
         "/var/lib/browser/config:/config"
       ];
+
+      devices = [ "/dev/dri:/dev/dri" ];
     };
 
     unitConfig = {
