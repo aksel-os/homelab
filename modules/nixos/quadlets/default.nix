@@ -8,6 +8,7 @@
     ./media
     ./actualbudget.nix
     ./sparkyfitness.nix
+    ./searxng.nix
   ];
 
   virtualisation.quadlet.enable = true;
