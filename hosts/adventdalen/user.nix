@@ -21,6 +21,7 @@
 
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFXXVv2ocQ7Rad2icTVKNzv5aZDB0vOqayrfZ5uv/Cok admin-homelab"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMoobiO9N7IRim+F9/rjIioViqK0pFPiFTHWFX4SAnY+"
     ];
 
     hashedPasswordFile = config.sops.secrets."adventdalen/passwd".path;
