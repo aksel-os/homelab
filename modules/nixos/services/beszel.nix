@@ -13,7 +13,7 @@
       environment = {
         LISTEN = "127.0.0.1:45876";
         DOCKER_HOST = "unix:///run/podman/podman.sock";
-        # KEY = "";
+        KEY = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM80/+uCXHOyJIjCLFSyE6P3VdWnfvUI1kwxlFYOyk49";
       };
     };
   };
