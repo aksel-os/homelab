@@ -1,6 +1,8 @@
 {
   imports = [
-    ./monitoring
+    # ./monitoring
+    ./beszel.nix
+    ./gotify.nix
     ./dashboard
     ./postgresql.nix
     ./recyclarr.nix
