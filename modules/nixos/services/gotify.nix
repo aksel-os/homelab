@@ -18,9 +18,9 @@ in
     enable = true;
     environmentFiles = [ templates."gotify.env".path ];
     environment = {
-      GOTIFY_SERVER_LISTENADDR = "127.0.0.1";
+      GOTIFY_SERVER_LISTENADDR = "0.0.0.0";
       GOTIFY_SERVER_PORT = 8070;
-      # GOTIFY_REGISTRATION = "false";
+      GOTIFY_REGISTRATION = "false";
     };
   };
 
@@ -35,5 +35,6 @@ in
     services.gotify.loadBalancer.servers = [ { url = "http://127.0.0.1:8070"; } ];
   };
 
+  networking.firewall.interfaces."dns-arr".allowedTCPPorts = [ 8070 ];
   services.restic.backups.apps.paths = [ "/var/lib/gotify-server" ];
 }
