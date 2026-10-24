@@ -13,6 +13,7 @@
     yt-dlp
 
     unzip
+    jdupes
     vim
     git
     dust
