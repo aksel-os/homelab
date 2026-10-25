@@ -1,7 +1,6 @@
 { config, ... }:
 
 let
-  inherit (config.sops) templates;
   inherit (config.virtualisation.quadlet) networks;
 
 in
@@ -21,7 +20,6 @@ in
       image = "docker.io/fireflyiii/data-importer:version-2.3.5";
       networks = [ networks.dns.ref ];
 
-      environmentFiles = [ templates."firefly-importer.env".path ];
       environments = {
         TZ = config.time.timeZone;
         FIREFLY_III_URL = "http://firefly:8080";
