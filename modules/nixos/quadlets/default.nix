@@ -8,6 +8,7 @@
     ./media
     ./actualbudget.nix
     ./firefly.nix
+    ./firefly-importer.nix
     ./sparkyfitness.nix
     ./searxng.nix
   ];
