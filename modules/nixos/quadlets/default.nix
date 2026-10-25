@@ -7,6 +7,7 @@
     ./arr
     ./media
     ./actualbudget.nix
+    ./firefly.nix
     ./sparkyfitness.nix
     ./searxng.nix
   ];
