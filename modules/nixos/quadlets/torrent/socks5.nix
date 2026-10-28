@@ -14,6 +14,7 @@ in
 
       environments = {
         PROXY_PORT = "1080";
+        REQUIRE_AUTH = "false";
       };
     };
 
