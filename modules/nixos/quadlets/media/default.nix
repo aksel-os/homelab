@@ -7,5 +7,6 @@
     ./karakeep.nix
     ./immich.nix
     ./romm.nix
+    ./komga.nix
   ];
 }
