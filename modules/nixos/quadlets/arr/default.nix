@@ -10,6 +10,7 @@
     ./autobrr.nix
     ./cleanuparr.nix
     ./jackett.nix
+    ./suwayomi.nix
   ];
 
   virtualisation.quadlet.networks.arr = {
