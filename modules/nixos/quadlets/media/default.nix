@@ -8,5 +8,6 @@
     ./immich.nix
     ./romm.nix
     ./komga.nix
+    ./komf.nix
   ];
 }
