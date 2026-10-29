@@ -9,7 +9,10 @@ in
   virtualisation.quadlet.containers.flaresolverr = {
     containerConfig = {
       image = "ghcr.io/flaresolverr/flaresolverr:latest";
-      networks = [ networks.arr.ref ];
+      networks = [
+        networks.arr.ref
+        networks.dns.ref
+      ];
 
       environments = {
         TZ = config.time.timeZone;
