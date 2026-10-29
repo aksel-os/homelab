@@ -10,7 +10,7 @@
     ./firefly.nix
     ./firefly-importer.nix
     ./sparkyfitness.nix
-    ./searxng.nix
+    ./degoog.nix
   ];
 
   virtualisation.quadlet.enable = true;
