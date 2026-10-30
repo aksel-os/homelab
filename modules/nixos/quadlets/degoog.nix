@@ -28,7 +28,10 @@ in
       ];
 
       image = "ghcr.io/degoog-org/degoog:1.1.1";
-      networks = [ networks.dns.ref ];
+      networks = [
+        networks.dns.ref
+        networks.arr.ref
+      ];
 
       environmentFiles = [ templates."degoog.env".path ];
       environments = {
