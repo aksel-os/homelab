@@ -11,6 +11,7 @@
     ./firefly-importer.nix
     ./sparkyfitness.nix
     ./degoog.nix
+    ./dashbrr.nix
   ];
 
   virtualisation.quadlet.enable = true;
