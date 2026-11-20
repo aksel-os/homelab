@@ -27,7 +27,7 @@ in
         "traefik.http.routers.sonani.middlewares=purescale@file"
       ];
 
-      image = "docker.io/linuxserver/sonarr:4.0.20.3014-ls325";
+      image = "ghcr.io/hotio/sonarr:version-4.0.20.3014";
       networks = [ networks.arr.ref ];
 
       environments = {
