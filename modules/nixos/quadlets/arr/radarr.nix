@@ -27,7 +27,7 @@ in
         "traefik.http.routers.radarr.middlewares=purescale@file"
       ];
 
-      image = "ghcr.io/hotio/radarr:version-7.0.3.10918";
+      image = "ghcr.io/hotio/radarr:release-7.0.3.10918";
       networks = [ networks.arr.ref ];
 
       environments = {

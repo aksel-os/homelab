@@ -17,7 +17,7 @@ in
         "traefik.http.routers.prowlarr.middlewares=purescale@file"
       ];
 
-      image = "ghcr.io/hotio/prowlarr:version-3.0.2.5780";
+      image = "ghcr.io/hotio/prowlarr:release-3.0.2.5780";
       networks = [ networks.arr.ref ];
 
       environments = {
